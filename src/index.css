@@ -1,0 +1,343 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ======================================
+   BASE RESET & GLOBAL STYLES
+====================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: #ffffff;
+  font-family: "Outfit", sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ======================================
+   CRT SCANLINE OVERLAY
+====================================== */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.018) 0px,
+    rgba(255, 255, 255, 0.018) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+/* Subtle noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ======================================
+   TYPOGRAPHY
+====================================== */
+.font-pixel { font-family: "Press Start 2P", monospace; }
+.font-mono-custom { font-family: "Space Mono", monospace; }
+
+/* ======================================
+   NEON UTILITIES
+====================================== */
+.neon-border {
+  border: 1px solid #00FFFF;
+  box-shadow: 0 0 12px #00FFFF, inset 0 0 6px rgba(0, 255, 255, 0.1);
+}
+
+.neon-text {
+  color: #00FFFF;
+  text-shadow: 0 0 10px #00FFFF, 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.neon-glow {
+  box-shadow: 0 0 12px #00FFFF, 0 0 24px rgba(0, 255, 255, 0.3);
+}
+
+/* ======================================
+   GLITCH TEXT EFFECT
+====================================== */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  color: #00FFFF;
+  animation: glitch-1 0.3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+  transform: translate(-2px, 0);
+  opacity: 0.7;
+}
+
+.glitch::after {
+  color: #ff00ff;
+  animation: glitch-2 0.3s infinite;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+  transform: translate(2px, 0);
+  opacity: 0.7;
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(-2px, 0) skew(0deg); }
+  25%       { transform: translate(2px, -1px) skew(0.5deg); }
+  50%       { transform: translate(-1px, 1px) skew(-0.3deg); }
+  75%       { transform: translate(3px, 0) skew(0.2deg); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(2px, 0) skew(0deg); }
+  25%       { transform: translate(-3px, 1px) skew(-0.5deg); }
+  50%       { transform: translate(1px, -1px) skew(0.3deg); }
+  75%       { transform: translate(-2px, 0) skew(-0.2deg); }
+}
+
+/* ======================================
+   BLINKING CURSOR
+====================================== */
+.cursor-blink::after {
+  content: '_';
+  animation: blink 1s steps(2) infinite;
+  color: #00FFFF;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ======================================
+   STARFIELD BACKGROUND
+====================================== */
+.starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ======================================
+   PIXEL GRID BACKGROUND
+====================================== */
+.pixel-grid-bg {
+  background-image: radial-gradient(circle, rgba(0, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ======================================
+   SERVICE CARD HOVER
+====================================== */
+.service-card {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: #00FFFF;
+  box-shadow: 0 0 12px #00FFFF, 0 0 24px rgba(0, 255, 255, 0.2), inset 0 0 12px rgba(0,255,255,0.05);
+}
+
+/* Scanline flash on card hover */
+.service-card:hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 255, 0.03) 0px,
+    rgba(0, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  border-radius: inherit;
+}
+
+/* ======================================
+   MARQUEE
+====================================== */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ======================================
+   LIGHTBOX
+====================================== */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+/* ======================================
+   FORM INPUTS
+====================================== */
+.neon-input {
+  background: #050505;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  color: #fff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  caret-color: #00FFFF;
+}
+
+.neon-input:focus {
+  border-color: #00FFFF;
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
+
+/* ======================================
+   NAV LINK UNDERLINE
+====================================== */
+.nav-link {
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #00FFFF;
+  box-shadow: 0 0 6px #00FFFF;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #00FFFF;
+}
+
+/* ======================================
+   BUTTON STYLES
+====================================== */
+.btn-neon {
+  border: 1px solid #00FFFF;
+  color: #00FFFF;
+  background: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-neon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 255, 255, 0.08);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.btn-neon:hover::before {
+  transform: translateX(0);
+}
+
+.btn-neon:hover {
+  box-shadow: 0 0 16px #00FFFF, 0 0 32px rgba(0, 255, 255, 0.3);
+  text-shadow: 0 0 8px #00FFFF;
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.7);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
+}
+
+/* ======================================
+   ORBITAL RING
+====================================== */
+.orbital-ring {
+  animation: orbit 12s linear infinite;
+  transform-origin: center;
+}
+
+/* ======================================
+   SCROLL REVEAL
+====================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ======================================
+   SECTION SPACING
+====================================== */
+section {
+  position: relative;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #00FFFF; border-radius: 3px; }
+
+/* Selection */
+::selection { background: rgba(0, 255, 255, 0.2); color: #00FFFF; }
