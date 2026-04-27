@@ -1,6 +1,8 @@
 // Starfield is now rendered globally in App.jsx
+import { useRef } from 'react';
 import { GlitchText, TextScramble } from './GlitchText.jsx';
 import FloatingOrbs from './FloatingOrbs.jsx';
+import TechMesh from './TechMesh.jsx';
 
 /* Orbital ring SVG with slow rotation */
 function OrbitalRing() {
@@ -51,13 +53,40 @@ export default function Hero() {
   return (
     <section
       id="hero"
+      ref={heroRef => { /* placeholder for ref attach via handler */ }}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pixel-grid-bg"
     >
       {/* Orbital rings */}
       <OrbitalRing />
 
-      {/* Decorative floating orbs */}
-      <FloatingOrbs />
+      {/* Decorative floating orbs (parallax) */}
+      <div
+        className="parallax parallax-slow"
+        onPointerMove={(e) => {
+          const el = e.currentTarget.closest('#hero');
+          if (!el) return;
+          const rect = el.getBoundingClientRect();
+          const cx = rect.left + rect.width / 2;
+          const cy = rect.top + rect.height / 2;
+          const dx = (e.clientX - cx) / (rect.width / 2); // -1..1
+          const dy = (e.clientY - cy) / (rect.height / 2); // -1..1
+          el.style.setProperty('--mx', `${dx * 28}px`);
+          el.style.setProperty('--my', `${dy * 18}px`);
+        }}
+        onPointerLeave={(e) => {
+          const el = e.currentTarget.closest('#hero');
+          if (!el) return;
+          el.style.setProperty('--mx', `0px`);
+          el.style.setProperty('--my', `0px`);
+        }}
+      >
+        <FloatingOrbs />
+      </div>
+
+      {/* Tech network overlay (parallax faster) */}
+      <div className="parallax parallax-fast">
+        <TechMesh />
+      </div>
 
       {/* Pixel grid overlay */}
       <div

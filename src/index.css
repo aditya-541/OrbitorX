@@ -355,25 +355,94 @@ section {
 }
 
 .floating-orb {
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(0,255,255,0.9) 40%, rgba(0,255,255,0.05) 70%);
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.95) 0%, rgba(0,220,200,0.85) 45%, rgba(0,180,160,0.15) 70%, rgba(0,0,0,0) 100%);
   mix-blend-mode: screen;
-  filter: blur(32px) saturate(140%);
-  opacity: 0.16;
+  filter: blur(36px) saturate(120%);
+  opacity: 0.14;
   transform: translate3d(0,0,0);
-  animation: orbFloat 10s ease-in-out infinite;
+  animation: orbFloat 12s ease-in-out infinite;
 }
 
 @keyframes orbFloat {
   0% { transform: translateY(0) scale(1); opacity: 0.14; }
-  25% { transform: translateY(-18px) scale(1.02); opacity: 0.18; }
-  50% { transform: translateY(-6px) scale(1); opacity: 0.16; }
-  75% { transform: translateY(12px) scale(1.01); opacity: 0.15; }
+  25% { transform: translateY(-12px) scale(1.015); opacity: 0.17; }
+  50% { transform: translateY(-6px) scale(1.01); opacity: 0.15; }
+  75% { transform: translateY(10px) scale(1.008); opacity: 0.145; }
   100% { transform: translateY(0) scale(1); opacity: 0.14; }
 }
 
 /* Make orbs subtler on small screens */
 @media (max-width: 640px) {
   .floating-orb { filter: blur(18px); opacity: 0.12; }
+}
+
+/* ======================================
+   TECH MESH (network lines + nodes)
+====================================== */
+.tech-mesh {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 6;
+  opacity: 0.12;
+}
+
+.tech-line {
+  fill: none;
+  stroke: url(#g1);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 8 6;
+  animation: techDash 6s linear infinite;
+}
+
+.tech-node {
+  fill: #00FFFF;
+  stroke: rgba(255,255,255,0.04);
+  stroke-width: 1;
+  filter: drop-shadow(0 0 8px rgba(0,255,255,0.6));
+  animation: techPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes techDash {
+  to { stroke-dashoffset: -64; }
+}
+
+@keyframes techPulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.45); opacity: 0.75; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .tech-mesh { opacity: 0.06; }
+}
+
+/* ======================================
+   PARALLAX WRAPPERS
+====================================== */
+.parallax { will-change: transform; }
+.parallax-slow { z-index: 6; }
+.parallax-fast { z-index: 7; }
+
+/* Apply hero mouse variables --mx and --my (set in Hero.jsx) */
+#hero { --mx: 0px; --my: 0px; }
+
+.parallax-slow {
+  transform: translate3d(calc(var(--mx) * 0.22), calc(var(--my) * 0.18), 0);
+  transition: transform 120ms linear;
+}
+
+.parallax-fast {
+  transform: translate3d(calc(var(--mx) * 0.42), calc(var(--my) * 0.35), 0);
+  transition: transform 100ms linear;
+}
+
+@media (max-width: 640px) {
+  .parallax-slow, .parallax-fast { transform: none; }
 }
 
 /* ======================================
