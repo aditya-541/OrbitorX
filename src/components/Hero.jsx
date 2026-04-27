@@ -78,7 +78,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 flex flex-col items-center gap-8 max-w-5xl mx-auto">
+      <div className="relative z-10 text-center px-6 flex flex-col items-center gap-8 max-w-5xl mx-auto float-slower">
         {/* Eyebrow */}
         <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase border border-neon/30 px-4 py-2 neon-glow">
           EST. 2019 · TECH AGENCY
@@ -90,13 +90,13 @@ export default function Hero() {
             text="OrbitorX"
             tag="span"
             repeat
-            className="glitch font-pixel text-4xl md:text-6xl lg:text-7xl block neon-text"
+            className="glitch font-pixel text-4xl md:text-6xl lg:text-7xl block neon-text float-slow neon-flicker"
             style={{ display: 'block' }}
           />
         </h1>
 
         {/* Tagline */}
-        <p className="font-mono-custom text-white/80 text-base md:text-xl tracking-widest">
+        <p className="font-mono-custom text-white/80 text-base md:text-xl tracking-widest float-slow">
           <TextScramble text="We Launch. You Scale." delay={800} />
           <span className="cursor-blink" />
         </p>
@@ -107,11 +107,11 @@ export default function Hero() {
         </p>
 
         {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 float-slow">
           <button
             id="cta-work-with-us"
             onClick={scrollToServices}
-            className="btn-neon font-pixel text-xs px-8 py-4 tracking-widest transition-all duration-300"
+            className="btn-neon font-pixel text-xs px-8 py-4 tracking-widest transition-all duration-300 pulse"
           >
             Work With Us
           </button>
@@ -124,14 +124,7 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* Scroll hint */}
-        <div className="flex flex-col items-center gap-2 mt-8 opacity-40">
-          <span className="font-mono-custom text-[10px] tracking-widest text-white/50 uppercase">Scroll</span>
-          <div
-            className="w-px h-8 bg-neon/50"
-            style={{ animation: 'blink 2s ease-in-out infinite' }}
-          />
-        </div>
+        {/* Scroll hint removed */}
       </div>
     </section>
   );

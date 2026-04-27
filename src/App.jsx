@@ -6,6 +6,7 @@ import About    from './components/About.jsx';
 import Clients  from './components/Clients.jsx';
 import Contact  from './components/Contact.jsx';
 import Footer   from './components/Footer.jsx';
+import CornerComet from './components/CornerComet.jsx';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <CornerComet />
     </>
   );
 }

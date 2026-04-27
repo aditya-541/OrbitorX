@@ -71,8 +71,8 @@ body::before {
 }
 
 .neon-text {
-  color: #00FFFF;
-  text-shadow: 0 0 10px #00FFFF, 0 0 20px rgba(0, 255, 255, 0.5);
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .neon-glow {
@@ -97,7 +97,7 @@ body::before {
 }
 
 .glitch::before {
-  color: #00FFFF;
+  color: #ffffff;
   animation: glitch-1 0.3s infinite;
   clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
   transform: translate(-2px, 0);
@@ -105,7 +105,7 @@ body::before {
 }
 
 .glitch::after {
-  color: #ff00ff;
+  color: #ffffff;
   animation: glitch-2 0.3s infinite;
   clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
   transform: translate(2px, 0);
@@ -334,6 +334,8 @@ section {
   position: relative;
 }
 
+/* Let sections (like the hero) control their own height and centering. */
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #000; }
@@ -341,3 +343,114 @@ section {
 
 /* Selection */
 ::selection { background: rgba(0, 255, 255, 0.2); color: #00FFFF; }
+
+/* ======================================
+   CORNER COMET ANIMATION
+   Small animated glowing orb with tail
+====================================== */
+.corner-comet {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 140px;
+  height: 120px;
+  pointer-events: none;
+  z-index: 60;
+}
+
+.corner-comet .comet {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #00FFFF 60%);
+  box-shadow: 0 0 10px #00FFFF, 0 0 24px rgba(0,255,255,0.25);
+  transform: translate(0,0) scale(0.9);
+  animation: comet-move 6s linear infinite;
+}
+
+.corner-comet .comet::after {
+  content: '';
+  position: absolute;
+  left: -140px;
+  top: 50%;
+  width: 140px;
+  height: 4px;
+  background: linear-gradient(90deg, rgba(0,255,255,0) 0%, rgba(0,255,255,0.25) 40%, rgba(0,255,255,0.06) 80%, rgba(0,255,255,0) 100%);
+  transform: translateY(-50%) rotate(-18deg);
+  filter: blur(2px);
+  opacity: 0.9;
+}
+
+@keyframes comet-move {
+  0% {
+    transform: translate(0,0) scale(0.9);
+    opacity: 0.9;
+  }
+  25% {
+    transform: translate(-36px,-18px) scale(1.05);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-72px,-8px) scale(0.95);
+    opacity: 0.85;
+  }
+  75% {
+    transform: translate(-36px,14px) scale(1.0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(0,0) scale(0.9);
+    opacity: 0.9;
+  }
+}
+
+/* ======================================
+   FLOAT / PULSE / FLICKER ANIMATIONS
+====================================== */
+.float-slow {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.float-slower {
+  animation: floatY 10s ease-in-out infinite;
+}
+
+@keyframes floatY {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.pulse {
+  animation: pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+  50% { transform: scale(1.025); box-shadow: 0 0 20px rgba(0,255,255,0.12); }
+  100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+}
+
+.neon-flicker {
+  animation: neonFlicker 3.6s linear infinite;
+}
+
+@keyframes neonFlicker {
+  0% { opacity: 1; filter: drop-shadow(0 0 10px rgba(255,255,255,0.4)); }
+  20% { opacity: 0.9; }
+  40% { opacity: 0.98; }
+  60% { opacity: 0.92; }
+  80% { opacity: 0.99; }
+ 100% { opacity: 1; }
+}
+
+/* Slightly delay animations on smaller screens for subtlety */
+@media (max-width: 640px) {
+  .float-slow, .float-slower { animation-duration: 12s; }
+  .pulse { animation-duration: 4s; }
+}
+
+
