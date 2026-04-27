@@ -52,9 +52,6 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pixel-grid-bg"
     >
-      {/* Starfield */}
-      <StarfieldCanvas />
-
       {/* Orbital rings */}
       <OrbitalRing />
 
