@@ -1,4 +1,4 @@
-import StarfieldCanvas from './StarfieldCanvas.jsx';
+// Starfield is now rendered globally in App.jsx
 import { GlitchText, TextScramble } from './GlitchText.jsx';
 
 /* Orbital ring SVG with slow rotation */

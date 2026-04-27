@@ -7,10 +7,12 @@ import Clients  from './components/Clients.jsx';
 import Contact  from './components/Contact.jsx';
 import Footer   from './components/Footer.jsx';
 import CornerComet from './components/CornerComet.jsx';
+import StarfieldCanvas from './components/StarfieldCanvas.jsx';
 
 export default function App() {
   return (
     <>
+      <StarfieldCanvas />
       <Navbar />
       <main>
         <Hero />
