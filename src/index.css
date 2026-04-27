@@ -345,6 +345,38 @@ section {
 ::selection { background: rgba(0, 255, 255, 0.2); color: #00FFFF; }
 
 /* ======================================
+   FLOATING ORBS (decorative, blurred)
+====================================== */
+.floating-orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-orb {
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(0,255,255,0.9) 40%, rgba(0,255,255,0.05) 70%);
+  mix-blend-mode: screen;
+  filter: blur(32px) saturate(140%);
+  opacity: 0.16;
+  transform: translate3d(0,0,0);
+  animation: orbFloat 10s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0% { transform: translateY(0) scale(1); opacity: 0.14; }
+  25% { transform: translateY(-18px) scale(1.02); opacity: 0.18; }
+  50% { transform: translateY(-6px) scale(1); opacity: 0.16; }
+  75% { transform: translateY(12px) scale(1.01); opacity: 0.15; }
+  100% { transform: translateY(0) scale(1); opacity: 0.14; }
+}
+
+/* Make orbs subtler on small screens */
+@media (max-width: 640px) {
+  .floating-orb { filter: blur(18px); opacity: 0.12; }
+}
+
+/* ======================================
    CORNER COMET ANIMATION
    Small animated glowing orb with tail
 ====================================== */

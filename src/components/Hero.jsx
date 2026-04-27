@@ -1,5 +1,6 @@
 // Starfield is now rendered globally in App.jsx
 import { GlitchText, TextScramble } from './GlitchText.jsx';
+import FloatingOrbs from './FloatingOrbs.jsx';
 
 /* Orbital ring SVG with slow rotation */
 function OrbitalRing() {
@@ -54,6 +55,9 @@ export default function Hero() {
     >
       {/* Orbital rings */}
       <OrbitalRing />
+
+      {/* Decorative floating orbs */}
+      <FloatingOrbs />
 
       {/* Pixel grid overlay */}
       <div
