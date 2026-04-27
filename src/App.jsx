@@ -13,17 +13,19 @@ export default function App() {
   return (
     <>
       <StarfieldCanvas />
-      <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <Gallery />
-        <About />
-        <Clients />
-        <Contact />
-      </main>
-      <Footer />
-      <CornerComet />
+      <div className="relative z-10">
+        <Navbar />
+        <main>
+          <Hero />
+          <Services />
+          <Gallery />
+          <About />
+          <Clients />
+          <Contact />
+        </main>
+        <Footer />
+        <CornerComet />
+      </div>
     </>
   );
 }

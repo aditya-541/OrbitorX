@@ -81,7 +81,7 @@ export default function StarfieldCanvas() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full"
-      style={{ display: 'block', zIndex: 0 }}
+      style={{ display: 'block', zIndex: -1 }}
       aria-hidden="true"
     />
   );
