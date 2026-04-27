@@ -6,7 +6,7 @@ const doubled = [...clients, ...clients];
 
 export default function Clients() {
   return (
-    <section className="bg-dark-2 py-20 px-0 overflow-hidden">
+    <section id="clients" className="bg-dark-2 py-20 px-0 overflow-hidden section-parallax">
       <div className="max-w-7xl mx-auto px-6 mb-12">
         <FadeIn>
           <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase">

@@ -8,7 +8,7 @@ const STATS = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-black py-28 px-6">
+    <section id="about" className="bg-black py-28 px-6 section-parallax">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <FadeIn>

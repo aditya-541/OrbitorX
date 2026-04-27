@@ -60,7 +60,7 @@ export default function Gallery() {
   const closeLightbox = useCallback(() => setSelected(null), []);
 
   return (
-    <section id="work" className="bg-dark-3 py-28 px-6">
+    <section id="work" className="bg-dark-3 py-28 px-6 section-parallax">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <FadeIn>

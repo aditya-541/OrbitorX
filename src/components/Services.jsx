@@ -73,7 +73,7 @@ function ServiceCard({ icon, title, desc, index }) {
 
 export default function Services() {
   return (
-    <section id="services" className="bg-black py-28 px-6">
+    <section id="services" className="bg-black py-28 px-6 section-parallax">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <FadeIn>
