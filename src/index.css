@@ -432,13 +432,13 @@ section {
 #hero { --mx: 0px; --my: 0px; }
 
 .parallax-slow {
-  transform: translate3d(calc(var(--mx) * 0.22), calc(var(--my) * 0.18), 0);
-  transition: transform 120ms linear;
+  transform: translate3d(calc(var(--mx) * 0.6), calc(var(--my) * 0.5), 0);
+  transition: transform 80ms linear;
 }
 
 .parallax-fast {
-  transform: translate3d(calc(var(--mx) * 0.42), calc(var(--my) * 0.35), 0);
-  transition: transform 100ms linear;
+  transform: translate3d(calc(var(--mx) * 1.0), calc(var(--my) * 0.9), 0);
+  transition: transform 70ms linear;
 }
 
 @media (max-width: 640px) {

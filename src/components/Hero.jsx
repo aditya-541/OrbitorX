@@ -70,8 +70,9 @@ export default function Hero() {
           const cy = rect.top + rect.height / 2;
           const dx = (e.clientX - cx) / (rect.width / 2); // -1..1
           const dy = (e.clientY - cy) / (rect.height / 2); // -1..1
-          el.style.setProperty('--mx', `${dx * 28}px`);
-          el.style.setProperty('--my', `${dy * 18}px`);
+          // stronger intensity
+          el.style.setProperty('--mx', `${dx * 60}px`);
+          el.style.setProperty('--my', `${dy * 40}px`);
         }}
         onPointerLeave={(e) => {
           const el = e.currentTarget.closest('#hero');
