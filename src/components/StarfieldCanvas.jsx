@@ -13,7 +13,8 @@ export default function StarfieldCanvas() {
   const dustRef = useRef([]);
 
   const initStars = useCallback((canvas) => {
-    const count = Math.floor((canvas.width * canvas.height) / 4000);
+    const reduced = canvas.width < 640;
+    const count = reduced ? Math.floor((canvas.width * canvas.height) / 16000) : Math.floor((canvas.width * canvas.height) / 4000);
     starsRef.current = Array.from({ length: count }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -22,6 +23,12 @@ export default function StarfieldCanvas() {
       opacity: Math.random() * 0.7 + 0.2,
       pulse: Math.random() * Math.PI * 2,
     }));
+    if (reduced) {
+      cloudsRef.current = [];
+      dustRef.current = [];
+      shootsRef.current = [];
+      return;
+    }
 
     // Nebula clouds (two layered sets for depth)
     const cloudCount = Math.max(2, Math.floor((canvas.width * canvas.height) / 260000));
