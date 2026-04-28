@@ -1,36 +1,43 @@
-const fs = require('fs');
-const path = require('path');
+const { Pool } = require('pg');
 
-const DB_FILE = path.join(__dirname, '..', 'db.json');
+const connectionString = process.env.DATABASE_URL || null;
+const pool = new Pool({ connectionString });
 
-function read() {
+// Ensure messages table exists
+(async () => {
   try {
-    const raw = fs.readFileSync(DB_FILE, 'utf-8');
-    return JSON.parse(raw);
-  } catch (e) {
-    return { messages: [] };
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS messages (
+        id TEXT PRIMARY KEY,
+        name TEXT,
+        email TEXT NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+        status TEXT
+      );
+    `);
+  } catch (err) {
+    console.error('Failed to ensure messages table:', err.message || err);
   }
-}
-
-function write(payload) {
-  fs.writeFileSync(DB_FILE, JSON.stringify(payload, null, 2));
-}
+})();
 
 module.exports = {
-  get(key) {
-    const data = read();
-    return data[key] || [];
+  async get(key) {
+    if (key !== 'messages') return [];
+    const res = await pool.query('SELECT id, name, email, message, created_at AS "createdAt", status FROM messages ORDER BY created_at DESC');
+    return res.rows;
   },
-  insert(key, item) {
-    const data = read();
-    if (!data[key]) data[key] = [];
-    data[key].push(item);
-    write(data);
+  async insert(key, item) {
+    if (key !== 'messages') return null;
+    const q = 'INSERT INTO messages(id, name, email, message, created_at, status) VALUES($1,$2,$3,$4,$5,$6)';
+    await pool.query(q, [item.id, item.name, item.email, item.message, item.createdAt || new Date().toISOString(), item.status || 'new']);
     return item;
   },
-  clear(key) {
-    const data = read();
-    data[key] = [];
-    write(data);
+  async clear(key) {
+    if (key !== 'messages') return;
+    await pool.query('DELETE FROM messages');
+  },
+  async close() {
+    await pool.end();
   }
 };

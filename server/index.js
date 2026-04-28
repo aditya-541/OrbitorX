@@ -29,21 +29,31 @@ app.get('/api/v1/info', (req, res) => {
 });
 
 // Public contact endpoint — stores message in local JSON DB
-app.post('/api/v1/contact', (req, res) => {
-  const { name, email, message } = req.body || {};
-  if (!message || !email) return res.status(400).json({ error: 'email and message required' });
+app.post('/api/v1/contact', async (req, res) => {
+  try {
+    const { name, email, message } = req.body || {};
+    if (!message || !email) return res.status(400).json({ error: 'email and message required' });
 
-  const item = { id: nanoid(), name: name || null, email, message, createdAt: new Date().toISOString(), status: 'new' };
-  db.insert('messages', item);
-  res.status(202).json({ ok: true, id: item.id });
+    const item = { id: nanoid(), name: name || null, email, message, createdAt: new Date().toISOString(), status: 'new' };
+    await db.insert('messages', item);
+    res.status(202).json({ ok: true, id: item.id });
+  } catch (err) {
+    console.error('contact error', err);
+    res.status(500).json({ error: 'internal_error' });
+  }
 });
 
 // Admin: list messages (requires API key)
-app.get('/api/v1/messages', (req, res) => {
-  const key = req.header('x-api-key') || req.query.api_key;
-  if (!process.env.API_KEY || key !== process.env.API_KEY) return res.status(401).json({ error: 'unauthorized' });
-  const messages = db.get('messages');
-  res.json({ count: messages.length, messages });
+app.get('/api/v1/messages', async (req, res) => {
+  try {
+    const key = req.header('x-api-key') || req.query.api_key;
+    if (!process.env.API_KEY || key !== process.env.API_KEY) return res.status(401).json({ error: 'unauthorized' });
+    const messages = await db.get('messages');
+    res.json({ count: messages.length, messages });
+  } catch (err) {
+    console.error('messages error', err);
+    res.status(500).json({ error: 'internal_error' });
+  }
 });
 
 // Simple 404
