@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const { nanoid } = require('nanoid');
 const db = require('./lib/db');
+const notify = require('./lib/notify');
 
 const app = express();
 
@@ -36,7 +37,10 @@ app.post('/api/v1/contact', async (req, res) => {
 
     const item = { id: nanoid(), name: name || null, email, message, createdAt: new Date().toISOString(), status: 'new' };
     await db.insert('messages', item);
+    // respond quickly, then send notification asynchronously
     res.status(202).json({ ok: true, id: item.id });
+    // fire-and-forget notification
+    notify.sendContactNotification(item).catch((err) => console.error('notify error', err));
   } catch (err) {
     console.error('contact error', err);
     res.status(500).json({ error: 'internal_error' });
