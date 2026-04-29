@@ -91,12 +91,19 @@ export default function Gallery() {
                   aria-label={`Open photo: ${evt.title}`}
                   onKeyDown={(e) => e.key === 'Enter' && openLightbox(evt)}
                 >
-                  <img
-                    src={evt.src}
-                    alt={evt.title}
-                    loading="lazy"
-                    className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcSet={['320','640','1024','1600'].map(w => `/images/events/${evt.file}-${w}.webp ${w}w`).join(', ')}
+                      sizes="(max-width:640px) 100vw, 640px"
+                    />
+                    <img
+                      src={`/images/events/${evt.file}-640.jpg`}
+                      alt={evt.title}
+                      loading="lazy"
+                      className="w-full h-auto block transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </picture>
 
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
@@ -128,7 +135,7 @@ export default function Gallery() {
       </div>
 
       {/* Lightbox */}
-      <Lightbox event={selected} onClose={closeLightbox} />
+        <Lightbox event={selected} onClose={closeLightbox} />
     </section>
   );
 }
