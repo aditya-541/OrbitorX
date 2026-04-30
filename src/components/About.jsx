@@ -6,18 +6,20 @@ const STATS = [
   { value: 3,   suffix: 'M+', label: 'Users Reached' },
 ];
 
-export default function About() {
+export default function About({ hideHeader = false }) {
   return (
     <section id="about" className="bg-black py-28 px-6 section-parallax">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <FadeIn>
-          <div className="mb-20 flex flex-col gap-4">
-            <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase">// THE NUMBERS</p>
-            <h2 className="font-pixel text-white text-xl md:text-3xl leading-tight">About OrbitorX</h2>
-            <div className="w-24 h-px bg-neon neon-glow" />
-          </div>
-        </FadeIn>
+        {!hideHeader && (
+          <FadeIn>
+            <div className="mb-20 flex flex-col gap-4">
+              <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase">// THE NUMBERS</p>
+              <h2 className="font-pixel text-white text-xl md:text-3xl leading-tight">About OrbitorX</h2>
+              <div className="w-24 h-px bg-neon neon-glow" />
+            </div>
+          </FadeIn>
+        )}
 
         {/* Stats row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-neon/10 mb-20">

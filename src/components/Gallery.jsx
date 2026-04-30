@@ -53,7 +53,7 @@ function Lightbox({ event, onClose }) {
 /* ------------------------------------------------------------------ */
 /* Gallery                                                             */
 /* ------------------------------------------------------------------ */
-export default function Gallery() {
+export default function Gallery({ hideHeader = false }) {
   const [selected, setSelected] = useState(null);
 
   const openLightbox  = useCallback((evt) => setSelected(evt), []);
@@ -63,15 +63,17 @@ export default function Gallery() {
     <section id="work" className="bg-dark-3 py-28 px-6 section-parallax">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <FadeIn>
-          <div className="mb-16 flex flex-col gap-4">
-            <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase">// FROM THE GROUND</p>
-            <h2 className="font-pixel text-white text-xl md:text-3xl leading-tight">
-              Event Gallery
-            </h2>
-            <div className="w-24 h-px bg-neon neon-glow" />
-          </div>
-        </FadeIn>
+        {!hideHeader && (
+          <FadeIn>
+            <div className="mb-16 flex flex-col gap-4">
+              <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase">// FROM THE GROUND</p>
+              <h2 className="font-pixel text-white text-xl md:text-3xl leading-tight">
+                Event Gallery
+              </h2>
+              <div className="w-24 h-px bg-neon neon-glow" />
+            </div>
+          </FadeIn>
+        )}
 
         {/* Masonry‑style grid via CSS columns */}
         <div

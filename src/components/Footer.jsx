@@ -2,10 +2,13 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-neon/10 py-8 px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        {/* Logo wordmark */}
-        <span className="font-pixel text-white/60 text-[10px] tracking-widest hover:text-neon transition-colors duration-300">
-          ORBITORX
-        </span>
+        {/* Logo */}
+        <img
+          src="/logo.png"
+          alt="OrbitorX"
+          className="h-10 w-auto object-contain brightness-110 opacity-70 hover:opacity-100 hover:brightness-125 transition-all duration-300"
+          draggable={false}
+        />
 
         {/* Copyright */}
         <p className="font-mono-custom text-white/30 text-xs tracking-widest">
