@@ -34,7 +34,7 @@ const SOCIAL_LINKS = [
   },
 ];
 
-export default function Contact() {
+export default function Contact({ hideHeader = false }) {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
@@ -44,7 +44,6 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Connect to a real backend or Formspree endpoint
     console.log('[OrbitorX Contact Form]', form);
     setSubmitted(true);
     setForm({ name: '', email: '', message: '' });
@@ -53,17 +52,19 @@ export default function Contact() {
   return (
     <section id="contact" className="bg-dark-3 py-28 px-6 section-parallax">
       <div className="max-w-3xl mx-auto">
-        {/* Heading */}
-        <FadeIn className="text-center mb-16">
-          <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase mb-4">
-            // GET IN TOUCH
-          </p>
-          <h2 className="font-pixel text-white text-2xl md:text-4xl leading-tight">
-            Ready to<br />
-            <span className="neon-text">Orbit?</span>
-          </h2>
-          <div className="w-24 h-px bg-neon neon-glow mx-auto mt-6" />
-        </FadeIn>
+        {/* Heading — hidden when page already has its own banner */}
+        {!hideHeader && (
+          <FadeIn className="text-center mb-16">
+            <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase mb-4">
+              // GET IN TOUCH
+            </p>
+            <h2 className="font-pixel text-white text-2xl md:text-4xl leading-tight">
+              Ready to<br />
+              <span className="neon-text">Orbit?</span>
+            </h2>
+            <div className="w-24 h-px bg-neon neon-glow mx-auto mt-6" />
+          </FadeIn>
+        )}
 
         {submitted ? (
           <FadeIn className="text-center py-16 border border-neon/30 neon-glow">

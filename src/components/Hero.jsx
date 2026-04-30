@@ -1,5 +1,5 @@
 // Starfield is now rendered globally in App.jsx
-import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { GlitchText, TextScramble } from './GlitchText.jsx';
 import FloatingOrbs from './FloatingOrbs.jsx';
 import TechMesh from './TechMesh.jsx';
@@ -43,17 +43,14 @@ function OrbitalRing() {
 }
 
 export default function Hero() {
-  const scrollToServices = () => {
-    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-  };
-  const scrollToWork = () => {
-    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const navigate = useNavigate();
+
+  const goToServices = () => navigate('/services');
+  const goToWork     = () => navigate('/work');
 
   return (
     <section
       id="hero"
-      ref={heroRef => { /* placeholder for ref attach via handler */ }}
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pixel-grid-bg"
     >
       {/* Orbital rings */}
@@ -141,14 +138,14 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 float-slow">
           <button
             id="cta-work-with-us"
-            onClick={scrollToServices}
+            onClick={goToServices}
             className="btn-neon font-pixel text-xs px-8 py-4 tracking-widest transition-all duration-300 pulse"
           >
             Work With Us
           </button>
           <button
             id="cta-see-our-work"
-            onClick={scrollToWork}
+            onClick={goToWork}
             className="btn-ghost font-pixel text-xs px-8 py-4 tracking-widest transition-all duration-300"
           >
             See Our Work

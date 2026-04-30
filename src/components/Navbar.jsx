@@ -1,39 +1,64 @@
 import { useState, useEffect } from 'react';
-import { GlitchText } from './GlitchText.jsx';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+const NAV_LINKS = [
+  { label: 'Services', path: '/services', homeId: 'services' },
+  { label: 'Work',     path: '/work',     homeId: 'work'     },
+  { label: 'About',    path: '/about',    homeId: 'about'    },
+  { label: 'Contact',  path: '/contact',  homeId: 'contact'  },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [active,   setActive]   = useState('');
+  const [scrolled,     setScrolled]     = useState(false);
+  const [activeHomeId, setActiveHomeId] = useState('');
+  const location  = useLocation();
+  const navigate  = useNavigate();
+  const isHome    = location.pathname === '/';
 
+  // Scroll-spy only on the home page
   useEffect(() => {
+    if (!isHome) { setActiveHomeId(''); return; }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
-      const sections = ['services', 'work', 'about', 'contact'];
+      const ids = NAV_LINKS.map((l) => l.homeId);
       let current = '';
-      sections.forEach((id) => {
+      ids.forEach((id) => {
         const el = document.getElementById(id);
-        if (el) {
-          const top = el.getBoundingClientRect().top;
-          if (top <= 120) current = id;
-        }
+        if (el && el.getBoundingClientRect().top <= 120) current = id;
       });
-      setActive(current);
+      setActiveHomeId(current);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHome]);
+
+  useEffect(() => {
+    setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  // Always navigate to the route path
+  const handleNavClick = (link) => {
+    navigate(link.path);
   };
 
-  const links = [
-    { label: 'Services', id: 'services' },
-    { label: 'Work',     id: 'work'     },
-    { label: 'About',    id: 'about'    },
-    { label: 'Contact',  id: 'contact'  },
-  ];
+  const handleLogoClick = () => {
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
+  };
+
+  const isLinkActive = (link) => {
+    if (isHome) return activeHomeId === link.homeId;
+    return location.pathname === link.path;
+  };
 
   return (
     <nav
@@ -43,28 +68,33 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+
         {/* Logo */}
         <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-pixel text-sm text-white neon-text tracking-wider hover:text-neon transition-colors"
+          onClick={handleLogoClick}
+          className="flex items-center group focus:outline-none shrink-0"
           aria-label="OrbitorX home"
         >
-          <GlitchText text="OX" repeat tag="span" className="font-pixel text-sm" />
-          <span className="font-pixel text-[10px] text-white/50 ml-2">ORBITORX</span>
+          <img
+            src="/logo.png"
+            alt="OrbitorX"
+            className="h-14 w-auto object-contain brightness-110 transition-all duration-300 group-hover:brightness-125 group-hover:drop-shadow-[0_0_16px_rgba(0,255,255,0.8)]"
+            draggable={false}
+          />
         </button>
 
-        {/* Nav Links */}
+        {/* Desktop nav links */}
         <ul className="hidden md:flex items-center gap-8 list-none m-0 p-0">
-          {links.map(({ label, id }) => (
-            <li key={id}>
+          {NAV_LINKS.map((link) => (
+            <li key={link.path}>
               <button
-                onClick={() => scrollTo(id)}
+                onClick={() => handleNavClick(link)}
                 className={`nav-link font-mono-custom text-xs tracking-widest uppercase transition-colors ${
-                  active === id ? 'text-neon active' : 'text-white/60'
+                  isLinkActive(link) ? 'text-neon active' : 'text-white/60'
                 }`}
               >
-                {label}
+                {link.label}
               </button>
             </li>
           ))}
@@ -72,21 +102,22 @@ export default function Navbar() {
 
         {/* CTA */}
         <button
-          onClick={() => scrollTo('contact')}
+          onClick={() => navigate('/contact')}
           className="btn-neon font-mono-custom text-xs px-5 py-2 tracking-widest hidden md:block"
         >
           LAUNCH →
         </button>
 
-        {/* Mobile hamburger */}
-        <MobileMenu links={links} scrollTo={scrollTo} />
+        {/* Mobile menu */}
+        <MobileMenu links={NAV_LINKS} onNavClick={handleNavClick} />
       </div>
     </nav>
   );
 }
 
-function MobileMenu({ links, scrollTo }) {
+function MobileMenu({ links, onNavClick }) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="md:hidden">
@@ -94,22 +125,36 @@ function MobileMenu({ links, scrollTo }) {
         onClick={() => setOpen(!open)}
         className="text-neon font-pixel text-xs border border-neon/40 px-3 py-2"
         aria-label="Toggle menu"
+        aria-expanded={open}
       >
         {open ? '✕' : '≡'}
       </button>
+
       {open && (
-        <div className="absolute top-full left-0 right-0 bg-black/95 border-b border-neon/20 backdrop-blur-md py-4">
+        <div className="absolute top-full left-0 right-0 bg-black/95 border-b border-neon/20 backdrop-blur-md py-6">
+          {/* Mobile menu logo */}
+          <div className="flex justify-center mb-4">
+            <img src="/logo.png" alt="OrbitorX" className="h-10 w-auto object-contain brightness-110" draggable={false} />
+          </div>
           <ul className="flex flex-col items-center gap-6 list-none m-0 p-0">
-            {links.map(({ label, id }) => (
-              <li key={id}>
+            {links.map((link) => (
+              <li key={link.path}>
                 <button
-                  onClick={() => { scrollTo(id); setOpen(false); }}
-                  className="nav-link font-mono-custom text-sm tracking-widest uppercase text-white/70"
+                  onClick={() => { onNavClick(link); setOpen(false); }}
+                  className="nav-link font-mono-custom text-sm tracking-widest uppercase text-white/70 hover:text-neon transition-colors"
                 >
-                  {label}
+                  {link.label}
                 </button>
               </li>
             ))}
+            <li>
+              <button
+                onClick={() => { navigate('/contact'); setOpen(false); }}
+                className="btn-neon font-mono-custom text-xs px-6 py-3 tracking-widest mt-2"
+              >
+                LAUNCH →
+              </button>
+            </li>
           </ul>
         </div>
       )}
