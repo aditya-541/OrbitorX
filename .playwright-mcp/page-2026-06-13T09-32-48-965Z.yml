@@ -1,0 +1,394 @@
+- generic [ref=e4]:
+  - navigation [ref=e5]:
+    - generic [ref=e6]:
+      - button "OrbitorX home" [ref=e7] [cursor=pointer]:
+        - img "OrbitorX" [ref=e8]
+      - list [ref=e9]:
+        - listitem [ref=e10]:
+          - button "Services" [ref=e11] [cursor=pointer]
+        - listitem [ref=e12]:
+          - button "Work" [ref=e13] [cursor=pointer]
+        - listitem [ref=e14]:
+          - button "About" [ref=e15] [cursor=pointer]
+        - listitem [ref=e16]:
+          - button "Contact" [ref=e17] [cursor=pointer]
+      - button "LAUNCH →" [ref=e18] [cursor=pointer]
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic:
+        - img
+        - img
+        - img
+      - generic [ref=e21]:
+        - paragraph [ref=e22]: EST. 2019 · TECH AGENCY
+        - heading "OrbitorX OrbitorX OrbitorX" [level=1] [ref=e23]:
+          - generic [ref=e24]: OrbitorX OrbitorX OrbitorX
+        - paragraph [ref=e25]:
+          - generic [ref=e26]: _
+        - paragraph [ref=e27]: Tech events · Startup growth · Product launches · Brand strategy
+        - generic [ref=e28]:
+          - button "Work With Us" [ref=e29] [cursor=pointer]
+          - button "See Our Work" [ref=e30] [cursor=pointer]
+    - generic [ref=e32]:
+      - generic [ref=e34]:
+        - paragraph [ref=e35]: // WHAT WE DO
+        - heading "Our Services" [level=2] [ref=e36]
+        - paragraph [ref=e38]: Eight integrated service pillars — from on-chain intelligence to cinematic production — engineered to launch, scale, and sustain ecosystems.
+      - generic [ref=e39]:
+        - button [ref=e42] [cursor=pointer]:
+          - generic [ref=e45]:
+            - img [ref=e47]
+            - generic [ref=e49]:
+              - paragraph [ref=e50]: EVENT OPS³
+              - heading "Event Ops³" [level=3] [ref=e51]
+            - generic [ref=e52]: +
+          - paragraph [ref=e53]: End-to-end decentralized event execution powering the future of developer-first experiences.
+          - generic [ref=e54]:
+            - paragraph [ref=e55]: We architect and execute decentralized hackathons, workshops, and technical events from the ground up — combining operational precision, transparent builder validation, partner-first coordination, and on-chain reporting.
+            - list [ref=e56]:
+              - listitem [ref=e57]:
+                - generic [ref=e58]: ▪ Speaker & Partner Coordination
+                - generic [ref=e59]: Curated talent pipeline — scouting aligned speakers, mentors, judges, and ecosystem partners with full event-day orchestration.
+              - listitem [ref=e60]:
+                - generic [ref=e61]: ▪ Logistics & Venue Management
+                - generic [ref=e62]: Venue scouting, negotiation, technical setup, travel, hospitality, and stage management for seamless execution.
+              - listitem [ref=e63]:
+                - generic [ref=e64]: ▪ Developer Profile Verification & Selection
+                - generic [ref=e65]: Screening participant profiles, portfolios, and on-chain credentials to ensure real builders are admitted.
+              - listitem [ref=e66]:
+                - generic [ref=e67]: ▪ Documented Grant Report (On-Chain Report Card)
+                - generic [ref=e68]: "Structured, timestamped proof-of-execution: attendance, submissions, partner metrics, outcomes — published on-chain."
+              - listitem [ref=e69]:
+                - generic [ref=e70]: ▪ KPI Fulfillment & Impact Analysis
+                - generic [ref=e71]: Measurable KPIs mapped to attendance quality, builder output, partnership depth, and media reach.
+              - listitem [ref=e72]:
+                - generic [ref=e73]: ▪ Conference & Ecosystem Alignment
+                - generic [ref=e74]: Integration with major ecosystem calendars — co-events, side-tracks, meetups, and collaborative experiences.
+            - generic [ref=e76]: → GET IN TOUCH
+        - button [ref=e80] [cursor=pointer]:
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - generic [ref=e87]:
+              - paragraph [ref=e88]: MARKETING
+              - heading "Marketing & Promotion" [level=3] [ref=e89]
+            - generic [ref=e90]: +
+          - paragraph [ref=e91]: Full-stack growth architecture designed to bring ecosystems closer to communities.
+          - generic [ref=e92]:
+            - paragraph [ref=e93]: We build awareness engines rooted in authenticity, community-driven storytelling, and data-backed execution — blending grassroots activation with global visibility.
+            - list [ref=e94]:
+              - listitem [ref=e95]:
+                - generic [ref=e96]: ▪ KOL & Influencer Marketing
+                - generic [ref=e97]: Credible creators, founders, and technical voices amplifying narrative — not noise — with measurable engagement.
+              - listitem [ref=e98]:
+                - generic [ref=e99]: ▪ Social Media & Community Management
+                - generic [ref=e100]: Brand communication across X, LinkedIn, Discord, Telegram — consistent voice, real-time storytelling, and content cadences.
+              - listitem [ref=e101]:
+                - generic [ref=e102]: ▪ Institutional & Ecosystem Collaborations
+                - generic [ref=e103]: Universities, accelerators, L1/L2 ecosystems, and dev guilds onboarded into co-campaigns and technical partnerships.
+              - listitem [ref=e104]:
+                - generic [ref=e105]: ▪ Design & Creative Asset Production
+                - generic [ref=e106]: High-quality graphics, motion reels, clips, teasers, and event visuals reinforcing credibility and premium storytelling.
+              - listitem [ref=e107]:
+                - generic [ref=e108]: ▪ Ambassador & Referral Program
+                - generic [ref=e109]: Structured ambassador engines with onboarding, training, incentive systems, and referral structures for grassroots growth.
+            - generic [ref=e111]: → GET IN TOUCH
+        - button [ref=e115] [cursor=pointer]:
+          - generic [ref=e118]:
+            - img [ref=e120]
+            - generic [ref=e122]:
+              - paragraph [ref=e123]: COMMUNITY
+              - heading "Community" [level=3] [ref=e124]
+            - generic [ref=e125]: +
+          - paragraph [ref=e126]: We build persistent, high-intent communities where developers progress, participate, and evolve.
+          - generic [ref=e127]:
+            - paragraph [ref=e128]: Our community engine is built on real participation, learning-first culture, and recognition systems that motivate long-term contribution — transforming followers into loyal contributors, creators, and ecosystem champions.
+            - list [ref=e129]:
+              - listitem [ref=e130]:
+                - generic [ref=e131]: ▪ NFC Attendance & Rewards
+                - generic [ref=e132]: NFC check-ins and reward systems verifying real participation, rewarding consistency, and tracking contribution journeys.
+              - listitem [ref=e133]:
+                - generic [ref=e134]: ▪ X Threads, AMAs & Event Recaps
+                - generic [ref=e135]: Narrative-driven content cycles — live AMAs, community spotlights, event recaps, and topical threads for real-time dialogue.
+              - listitem [ref=e136]:
+                - generic [ref=e137]: ▪ Retention & Engagement Strategy
+                - generic [ref=e138]: "Habit-forming community systems: activity loops, missions, reward cycles, participation streaks, and contribution tiers."
+              - listitem [ref=e139]:
+                - generic [ref=e140]: ▪ Yappers & Aura Creator Programs
+                - generic [ref=e141]: Structured creator-in-community programs empowering members to generate content, host discussions, and amplify narratives.
+              - listitem [ref=e142]:
+                - generic [ref=e143]: ▪ Designed Learning Curriculum
+                - generic [ref=e144]: Modular, gamified learning journeys with progression badges, project-based learning, cohort tracks, and mentorship loops.
+            - generic [ref=e146]: → GET IN TOUCH
+        - button [ref=e150] [cursor=pointer]:
+          - generic [ref=e153]:
+            - img [ref=e155]
+            - generic [ref=e158]:
+              - paragraph [ref=e159]: PRODUCTION
+              - heading "Production" [level=3] [ref=e160]
+            - generic [ref=e161]: +
+          - paragraph [ref=e162]: Visual storytelling engineered to immortalize every moment.
+          - generic [ref=e163]:
+            - paragraph [ref=e164]: We transform moments, missions, and milestones into compelling visual narratives — blending documentary rigor, brand storytelling, and cinematic craft to capture real builder energy and ecosystem momentum.
+            - list [ref=e165]:
+              - listitem [ref=e166]:
+                - generic [ref=e167]: ▪ Photography & Cinematography
+                - generic [ref=e168]: High-quality photo and video coverage capturing key moments, founder stories, community interactions, and environment shots.
+              - listitem [ref=e169]:
+                - generic [ref=e170]: ▪ 3D Rendering & Modeling
+                - generic [ref=e171]: Immersive 3D environments, product renders, digital worlds, and brand-driven visuals for campaigns and metaverse activations.
+              - listitem [ref=e172]:
+                - generic [ref=e173]: ▪ Podcast Production & Live Casting
+                - generic [ref=e174]: End-to-end production for founder talks, ecosystem interviews, community podcasts, and live broadcasts.
+              - listitem [ref=e175]:
+                - generic [ref=e176]: ▪ Raw Footage Editing & Motion Design
+                - generic [ref=e177]: Polished reels, highlight trailers, explainers, developer spotlights, and fast-cut motion graphics for social acceleration.
+              - listitem [ref=e178]:
+                - generic [ref=e179]: ▪ Visual FX & Graphic Design
+                - generic [ref=e180]: High-energy visuals — title sequences, VFX overlays, banners, thumbnails, and ecosystem-aligned branding kits.
+            - generic [ref=e182]: → GET IN TOUCH
+        - button [ref=e186] [cursor=pointer]:
+          - generic [ref=e189]:
+            - img [ref=e191]
+            - generic [ref=e193]:
+              - paragraph [ref=e194]: WEB2 SERVICES
+              - heading "Web2 Services" [level=3] [ref=e195]
+            - generic [ref=e196]: +
+          - paragraph [ref=e197]: Reliable, scalable, high-performance digital development forming the backbone of modern Web3 growth.
+          - generic [ref=e198]:
+            - paragraph [ref=e199]: We build the digital backbone that powers scalable growth and credibility — combining clean engineering, conversion-driven design, and automation systems to help teams operate efficiently and track real performance.
+            - list [ref=e200]:
+              - listitem [ref=e201]:
+                - generic [ref=e202]: ▪ Application & Full-Stack Web Development
+                - generic [ref=e203]: Responsive, fast, and secure applications with intuitive user journeys, solid backend architecture, and modern UI/UX.
+              - listitem [ref=e204]:
+                - generic [ref=e205]: ▪ Case Studies & Performance Analysis
+                - generic [ref=e206]: Structured case studies and data-driven storytelling documenting product wins, community success, and ecosystem achievements.
+              - listitem [ref=e207]:
+                - generic [ref=e208]: ▪ Lead Generation & Funnel Optimization
+                - generic [ref=e209]: Acquisition systems and optimized funnels using landing pages, automation flows, drip journeys, and conversion tracking.
+              - listitem [ref=e210]:
+                - generic [ref=e211]: ▪ Impact Tracking Dashboards
+                - generic [ref=e212]: Custom dashboards capturing growth, user behavior, event insights, and builder output — turning raw data into actionable intelligence.
+              - listitem [ref=e213]:
+                - generic [ref=e214]: ▪ CRM Automation & SEM Optimization
+                - generic [ref=e215]: CRM integration, automated outreach pipelines, and paid search management for predictable business growth.
+            - generic [ref=e217]: → GET IN TOUCH
+        - button [ref=e221] [cursor=pointer]:
+          - generic [ref=e224]:
+            - img [ref=e226]
+            - generic [ref=e228]:
+              - paragraph [ref=e229]: CONTENT & STRATEGY
+              - heading "Content & Strategy" [level=3] [ref=e230]
+            - generic [ref=e231]: +
+          - paragraph [ref=e232]: Strategic narrative design empowering founders, products, and ecosystems to communicate with precision.
+          - generic [ref=e233]:
+            - paragraph [ref=e234]: We engineer narratives that drive perception, adoption, and trust — crafting content that clarifies vision, builds authority, and communicates value with precision across every channel and stakeholder layer.
+            - list [ref=e235]:
+              - listitem [ref=e236]:
+                - generic [ref=e237]: ▪ GTM & Campaign Launch Strategy
+                - generic [ref=e238]: Structured go-to-market strategies with messaging pillars, channel sequencing, content funnels, and KPIs for adoption.
+              - listitem [ref=e239]:
+                - generic [ref=e240]: ▪ Blog Writing & Brand Messaging
+                - generic [ref=e241]: High-clarity blog content, technical explainers, ecosystem updates, and narrative assets with brand tone and positioning.
+              - listitem [ref=e242]:
+                - generic [ref=e243]: ▪ PR & Media Outreach
+                - generic [ref=e244]: Relevant media coverage coordinated with reporters, Web3 outlets, newsletters, and ecosystem platforms.
+              - listitem [ref=e245]:
+                - generic [ref=e246]: ▪ Thought Leadership & Founder Narratives
+                - generic [ref=e247]: Founder voices shaped into strategic public assets — opinion pieces, keynote scripts, podcast storylines, and panel talking points.
+            - generic [ref=e249]: → GET IN TOUCH
+        - button [ref=e253] [cursor=pointer]:
+          - generic [ref=e256]:
+            - img [ref=e258]
+            - generic [ref=e260]:
+              - paragraph [ref=e261]: ECOSYSTEM GROWTH
+              - heading "Ecosystem Growth & Partnerships" [level=3] [ref=e262]
+            - generic [ref=e263]: +
+          - paragraph [ref=e264]: Structured partnerships to drive adoption, discover builders, and enable cross-chain collaboration.
+          - generic [ref=e265]:
+            - paragraph [ref=e266]: We architect growth through meaningful, outcomes-driven alliances — connecting builders, protocols, infrastructure partners, and institutions into a unified value network.
+            - list [ref=e267]:
+              - listitem [ref=e268]:
+                - generic [ref=e269]: ▪ Cross-Project Collaborations (L1s, L2s, Exchanges, Protocols)
+                - generic [ref=e270]: Strategic collaboration across chains, infrastructure teams, exchanges, and protocols — joint campaigns, hackathon tracks, and co-marketing.
+              - listitem [ref=e271]:
+                - generic [ref=e272]: ▪ Strategic Partnership Outreach
+                - generic [ref=e273]: End-to-end partner acquisition — sourcing aligned partners, structuring value-exchange proposals, and leading outreach.
+              - listitem [ref=e274]:
+                - generic [ref=e275]: ▪ Project Scouting & Builder Onboarding
+                - generic [ref=e276]: High-quality projects, founders, and developer talent onboarded into ecosystem programs, grant funnels, and hackathons.
+              - listitem [ref=e277]:
+                - generic [ref=e278]: ▪ Ecosystem Mapping & Relationship Management
+                - generic [ref=e279]: Structured relationship maps and CRM pipelines tracking partner maturity, cross-team collaboration, and ecosystem influence.
+              - listitem [ref=e280]:
+                - generic [ref=e281]: ▪ Accelerator & Grant Program Support
+                - generic [ref=e282]: Support through accelerator programs, funding tracks, and grant applications — including milestone reporting and performance support.
+            - generic [ref=e284]: → GET IN TOUCH
+        - button "ON-CHAIN INTEL On-Chain Intelligence + Participation-driven intelligence layer validating real community progress, contribution, and impact. We bring transparency, accountability, and verifiable impact to ecosystem growth — mapping engagement on-chain, issuing participation credentials, and tracking contribution data so real builders get recognized. ▪ On-Chain Event Tracking & Verification Event participation and milestone activity recorded on-chain — validating attendance, submission quality, and contributor behavior. ▪ NFT Badges & Proof-of-Attendance Analytics Digital credentials and NFT badges tied to real activity — tracking engagement patterns, contribution depth, and cohort retention. ▪ DAO-Based KPI Tracking DAO-driven reporting frameworks mapping program KPIs to verifiable metrics for ecosystem funds, delegates, and partners. → GET IN TOUCH" [ref=e288] [cursor=pointer]:
+          - generic [ref=e291]:
+            - img [ref=e293]
+            - generic [ref=e295]:
+              - paragraph [ref=e296]: ON-CHAIN INTEL
+              - heading "On-Chain Intelligence" [level=3] [ref=e297]
+            - generic [ref=e298]: +
+          - paragraph [ref=e299]: Participation-driven intelligence layer validating real community progress, contribution, and impact.
+          - generic [ref=e300]:
+            - paragraph [ref=e301]: We bring transparency, accountability, and verifiable impact to ecosystem growth — mapping engagement on-chain, issuing participation credentials, and tracking contribution data so real builders get recognized.
+            - list [ref=e302]:
+              - listitem [ref=e303]:
+                - generic [ref=e304]: ▪ On-Chain Event Tracking & Verification
+                - generic [ref=e305]: Event participation and milestone activity recorded on-chain — validating attendance, submission quality, and contributor behavior.
+              - listitem [ref=e306]:
+                - generic [ref=e307]: ▪ NFT Badges & Proof-of-Attendance Analytics
+                - generic [ref=e308]: Digital credentials and NFT badges tied to real activity — tracking engagement patterns, contribution depth, and cohort retention.
+              - listitem [ref=e309]:
+                - generic [ref=e310]: ▪ DAO-Based KPI Tracking
+                - generic [ref=e311]: DAO-driven reporting frameworks mapping program KPIs to verifiable metrics for ecosystem funds, delegates, and partners.
+            - generic [ref=e313]: → GET IN TOUCH
+      - paragraph [ref=e316]: CLICK ANY SERVICE TO EXPAND // 8 PILLARS ACTIVE
+    - generic [ref=e318]:
+      - generic [ref=e320]:
+        - paragraph [ref=e321]: // FROM THE GROUND
+        - heading "Event Gallery" [level=2] [ref=e322]
+      - generic [ref=e324]:
+        - 'button "Open photo: TechSurge 2024" [ref=e327] [cursor=pointer]':
+          - generic:
+            - img "TechSurge 2024"
+          - generic [ref=e328]:
+            - paragraph [ref=e330]: TechSurge 2024
+            - paragraph [ref=e331]: Bengaluru · 2024
+        - 'button "Open photo: LaunchPad Summit" [ref=e334] [cursor=pointer]':
+          - generic:
+            - img "LaunchPad Summit"
+          - generic [ref=e335]:
+            - paragraph [ref=e337]: LaunchPad Summit
+            - paragraph [ref=e338]: Mumbai · 2024
+        - 'button "Open photo: Orbit Conf 2023" [ref=e341] [cursor=pointer]':
+          - generic:
+            - img "Orbit Conf 2023"
+          - generic [ref=e342]:
+            - paragraph [ref=e344]: Orbit Conf 2023
+            - paragraph [ref=e345]: Hyderabad · 2023
+        - 'button "Open photo: Scale Week" [ref=e348] [cursor=pointer]':
+          - generic:
+            - img "Scale Week"
+          - generic [ref=e349]:
+            - paragraph [ref=e351]: Scale Week
+            - paragraph [ref=e352]: Delhi · 2023
+        - 'button "Open photo: GrowthHack ''23" [ref=e355] [cursor=pointer]':
+          - generic:
+            - img "GrowthHack '23"
+          - generic [ref=e356]:
+            - paragraph [ref=e358]: GrowthHack '23
+            - paragraph [ref=e359]: Chennai · 2023
+        - 'button "Open photo: Product Cosmos" [ref=e362] [cursor=pointer]':
+          - generic:
+            - img "Product Cosmos"
+          - generic [ref=e363]:
+            - paragraph [ref=e365]: Product Cosmos
+            - paragraph [ref=e366]: Pune · 2024
+        - 'button "Open photo: Startup Ignite" [ref=e369] [cursor=pointer]':
+          - generic:
+            - img "Startup Ignite"
+          - generic [ref=e370]:
+            - paragraph [ref=e372]: Startup Ignite
+            - paragraph [ref=e373]: Bengaluru · 2022
+        - 'button "Open photo: DevFest OrbitorX" [ref=e376] [cursor=pointer]':
+          - generic:
+            - img "DevFest OrbitorX"
+          - generic [ref=e377]:
+            - paragraph [ref=e379]: DevFest OrbitorX
+            - paragraph [ref=e380]: Kolkata · 2022
+        - 'button "Open photo: Nexus 2024" [ref=e383] [cursor=pointer]':
+          - generic:
+            - img "Nexus 2024"
+          - generic [ref=e384]:
+            - paragraph [ref=e386]: Nexus 2024
+            - paragraph [ref=e387]: Ahmedabad · 2024
+      - paragraph [ref=e389]: 42+ events and counting. Tap any photo to expand.
+    - generic [ref=e391]:
+      - generic [ref=e393]:
+        - paragraph [ref=e394]: // THE NUMBERS
+        - heading "About OrbitorX" [level=2] [ref=e395]
+      - generic [ref=e397]:
+        - generic [ref=e399]:
+          - paragraph [ref=e400]:
+            - generic [ref=e401]: 0+
+          - paragraph [ref=e402]: Events Hosted
+        - generic [ref=e404]:
+          - paragraph [ref=e405]:
+            - generic [ref=e406]: 0+
+          - paragraph [ref=e407]: Startups Scaled
+        - generic [ref=e409]:
+          - paragraph [ref=e410]:
+            - generic [ref=e411]: 0M+
+          - paragraph [ref=e412]: Users Reached
+      - generic [ref=e414]:
+        - paragraph [ref=e417]: // MANIFESTO
+        - blockquote [ref=e418]: OrbitorX exists at the intersection of ambition and execution. We don't just advise — we embed, build, and launch alongside founders who refuse to orbit the same problems. Every event is a signal. Every startup we touch is a bet we believe in. Every product we shape is a statement about what the future should feel like. We don't just launch. We orbit.
+    - generic [ref=e419]:
+      - paragraph [ref=e422]: // TRUSTED BY
+      - generic "Clients ticker" [ref=e423]:
+        - generic [ref=e424]:
+          - generic [ref=e426]: Nexus Labs
+          - generic [ref=e428]: Stellar.io
+          - generic [ref=e430]: VeloStack
+          - generic [ref=e432]: PulseWave
+          - generic [ref=e434]: ArkForge
+          - generic [ref=e436]: Zephyr AI
+          - generic [ref=e438]: NovaCore
+          - generic [ref=e440]: DriftBit
+          - generic [ref=e442]: Axiom.dev
+          - generic [ref=e444]: SparkNode
+          - generic [ref=e446]: GridBase
+          - generic [ref=e448]: Lumos HQ
+          - generic [ref=e450]: Nexus Labs
+          - generic [ref=e452]: Stellar.io
+          - generic [ref=e454]: VeloStack
+          - generic [ref=e456]: PulseWave
+          - generic [ref=e458]: ArkForge
+          - generic [ref=e460]: Zephyr AI
+          - generic [ref=e462]: NovaCore
+          - generic [ref=e464]: DriftBit
+          - generic [ref=e466]: Axiom.dev
+          - generic [ref=e468]: SparkNode
+          - generic [ref=e470]: GridBase
+          - generic [ref=e472]: Lumos HQ
+    - generic [ref=e474]:
+      - generic [ref=e475]:
+        - paragraph [ref=e476]: // GET IN TOUCH
+        - heading "Ready to Orbit?" [level=2] [ref=e477]:
+          - text: Ready to
+          - text: Orbit?
+      - generic [ref=e480]:
+        - generic [ref=e481]:
+          - generic [ref=e482]: NAME //
+          - textbox "NAME //" [ref=e483]:
+            - /placeholder: Your name
+            - text: _
+        - generic [ref=e484]:
+          - generic [ref=e485]: EMAIL //
+          - textbox "EMAIL //" [ref=e486]:
+            - /placeholder: your@email.com
+        - generic [ref=e487]:
+          - generic [ref=e488]: MESSAGE //
+          - textbox "MESSAGE //" [ref=e489]:
+            - /placeholder: Tell us about your project...
+        - generic [ref=e490]:
+          - button "Launch →" [ref=e491] [cursor=pointer]
+          - paragraph [ref=e492]: No spam. Only signal.
+      - generic [ref=e493]:
+        - link "X / Twitter" [ref=e494] [cursor=pointer]:
+          - /url: https://twitter.com/orbitorx
+          - img [ref=e495]
+        - link "LinkedIn" [ref=e497] [cursor=pointer]:
+          - /url: https://linkedin.com/company/orbitorx
+          - img [ref=e498]
+        - link "Instagram" [ref=e500] [cursor=pointer]:
+          - /url: https://instagram.com/orbitorx
+          - img [ref=e501]
+  - contentinfo [ref=e503]:
+    - generic [ref=e504]:
+      - img "OrbitorX" [ref=e505]
+      - paragraph [ref=e506]: © 2025 OrbitorX. All systems go.
+      - generic [ref=e509]: SYSTEMS ONLINE

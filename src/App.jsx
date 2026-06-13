@@ -6,6 +6,10 @@ import CornerComet     from './components/CornerComet.jsx';
 import StarfieldCanvas from './components/StarfieldCanvas.jsx';
 import Preloader       from './components/Preloader.jsx';
 import MagneticCursor  from './components/MagneticCursor.jsx';
+import CursorTrail     from './components/CursorTrail.jsx';
+import FloatingCTA     from './components/FloatingCTA.jsx';
+import SEOMeta         from './components/SEOMeta.jsx';
+import { ToastProvider } from './components/Toast.jsx';
 
 import HomePage    from './pages/HomePage.jsx';
 import ServicesPage from './pages/ServicesPage.jsx';
@@ -88,8 +92,10 @@ export default function App() {
   if (!booted) return <Preloader onDone={handleBooted} />;
 
   return (
-    <>
+    <ToastProvider>
+      <SEOMeta />
       <MagneticCursor />
+      <CursorTrail />
       <ScrollProgressBar />
       <StarfieldCanvas />
       <div className="relative z-10">
@@ -107,7 +113,8 @@ export default function App() {
         </main>
         <Footer />
         <CornerComet />
+        <FloatingCTA />
       </div>
-    </>
+    </ToastProvider>
   );
 }

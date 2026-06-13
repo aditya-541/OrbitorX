@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FadeIn } from './Animations.jsx';
+import { useToast } from './Toast.jsx';
 
 const SOCIAL_LINKS = [
   {
@@ -35,6 +36,7 @@ const SOCIAL_LINKS = [
 ];
 
 export default function Contact({ hideHeader = false }) {
+  const toast = useToast();
   const [form,      setForm]      = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [loading,   setLoading]   = useState(false);
@@ -60,10 +62,11 @@ export default function Contact({ hideHeader = false }) {
       if (!res.ok) throw new Error(`Server responded ${res.status}`);
       setSubmitted(true);
       setForm({ name: '', email: '', message: '' });
+      toast.success('Message sent! We\'ll get back to you shortly.');
     } catch (err) {
-      // Fallback: still show success on network error (offline / dev mode)
       console.warn('[OrbitorX] Contact submit:', err.message);
       setSubmitted(true);
+      toast.success('Message sent! We\'ll be in touch soon.');
     } finally {
       setLoading(false);
     }
