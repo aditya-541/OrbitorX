@@ -4,6 +4,8 @@ import Navbar          from './components/Navbar.jsx';
 import Footer          from './components/Footer.jsx';
 import CornerComet     from './components/CornerComet.jsx';
 import StarfieldCanvas from './components/StarfieldCanvas.jsx';
+import Preloader       from './components/Preloader.jsx';
+import MagneticCursor  from './components/MagneticCursor.jsx';
 
 import HomePage    from './pages/HomePage.jsx';
 import ServicesPage from './pages/ServicesPage.jsx';
@@ -46,6 +48,7 @@ function PageWrapper({ children }) {
 
 export default function App() {
   const { pathname } = useLocation();
+  const [booted, setBooted] = useState(() => !!sessionStorage.getItem('ob_booted'));
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -76,8 +79,16 @@ export default function App() {
     };
   }, []);
 
+  const handleBooted = () => {
+    sessionStorage.setItem('ob_booted', '1');
+    setBooted(true);
+  };
+
+  if (!booted) return <Preloader onDone={handleBooted} />;
+
   return (
     <>
+      <MagneticCursor />
       <ScrollProgressBar />
       <StarfieldCanvas />
       <div className="relative z-10">

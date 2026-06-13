@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GlitchText, TextScramble } from './GlitchText.jsx';
 import NetworkOrb from './NetworkOrb.jsx';
+import KineticTagline from './KineticTagline.jsx';
 
 function ScrollHint() {
   return (
@@ -75,7 +76,7 @@ export default function Hero() {
           </div>
 
           {/* Main heading */}
-          <h1 className="flex flex-col gap-2">
+          <h1 className="flex flex-col gap-3">
             <GlitchText
               text="OrbitorX"
               tag="span"
@@ -83,10 +84,7 @@ export default function Hero() {
               className="glitch font-pixel text-5xl md:text-7xl lg:text-8xl block shimmer-text neon-flicker"
               style={{ display: 'block', lineHeight: 1.1 }}
             />
-            <span className="font-sans text-white/60 text-lg md:text-2xl font-light tracking-wide leading-snug">
-              We Launch.{' '}
-              <span className="text-white font-medium">You Scale.</span>
-            </span>
+            <KineticTagline className="text-lg md:text-2xl tracking-wide" />
           </h1>
 
           {/* Tagline scramble */}
