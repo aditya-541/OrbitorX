@@ -165,11 +165,11 @@ const SERVICES = [
 
 function BulletItem({ label, desc }) {
   return (
-    <li className="flex flex-col gap-1 border-l border-neon/20 pl-4 group/bullet hover:border-neon transition-colors duration-200">
-      <span className="font-mono-custom text-white/80 text-[11px] tracking-wide group-hover/bullet:text-neon transition-colors duration-200">
-        ▪ {label}
+    <li className="flex flex-col gap-1.5 border-l border-neon/15 pl-4 group/bullet hover:border-acid transition-colors duration-200">
+      <span className="font-mono-custom text-white/75 text-[11px] tracking-wide group-hover/bullet:text-neon transition-colors duration-200">
+        → {label}
       </span>
-      <span className="font-sans text-white/40 text-xs leading-relaxed group-hover/bullet:text-white/60 transition-colors duration-200">
+      <span className="font-sans text-white/38 text-xs leading-relaxed group-hover/bullet:text-white/58 transition-colors duration-200">
         {desc}
       </span>
     </li>
@@ -202,10 +202,10 @@ function ServiceCard({ service, index, isOpen, onToggle }) {
 
           {/* Title block */}
           <div className="flex-1 min-w-0">
-            <p className="font-mono-custom text-neon/50 text-[9px] tracking-[0.3em] uppercase mb-1">
+            <p className="tag-badge mb-2" style={{ color: '#39FF14', opacity: 0.7 }}>
               {service.tag}
             </p>
-            <h3 className={`font-pixel text-[10px] md:text-xs leading-snug transition-colors duration-300 ${isOpen ? 'text-neon' : 'text-white group-hover:text-neon'}`}>
+            <h3 className={`font-mono-custom font-bold text-sm leading-snug transition-colors duration-300 tracking-wide ${isOpen ? 'text-neon' : 'text-white group-hover:text-neon'}`}>
               {service.title}
             </h3>
           </div>
@@ -264,11 +264,14 @@ export default function Services({ hideHeader = false }) {
         {!hideHeader && (
           <FadeIn>
             <div className="mb-20 flex flex-col gap-4">
-              <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase">// WHAT WE DO</p>
+              <div className="flex items-center gap-3">
+                <div className="w-5 h-px bg-neon opacity-60" />
+                <p className="font-mono-custom text-neon/70 text-[10px] tracking-[0.4em] uppercase">// WHAT WE DO</p>
+              </div>
               <h2 className="font-pixel text-white text-xl md:text-3xl leading-tight">
                 Our Services
               </h2>
-              <div className="w-24 h-px bg-neon neon-glow" />
+              <div className="w-20 h-px bg-gradient-to-r from-neon via-acid/50 to-transparent" />
               <p className="font-sans text-white/40 text-sm max-w-xl leading-relaxed mt-2">
                 Eight integrated service pillars — from on-chain intelligence to cinematic production — engineered to launch, scale, and sustain ecosystems.
               </p>

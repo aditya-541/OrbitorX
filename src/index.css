@@ -60,7 +60,7 @@ body::before {
    TYPOGRAPHY
 ====================================== */
 .font-pixel { font-family: "Press Start 2P", monospace; }
-.font-mono-custom { font-family: "Space Mono", monospace; }
+.font-mono-custom { font-family: "IBM Plex Mono", monospace; }
 
 /* ======================================
    NEON UTILITIES
@@ -556,6 +556,107 @@ section {
 @media (max-width: 640px) {
   .float-slow, .float-slower { animation-duration: 12s; }
   .pulse { animation-duration: 4s; }
+}
+
+/* ======================================
+   PAGE TRANSITION
+====================================== */
+.page-enter {
+  animation: pageEnter 0.45s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes pageEnter {
+  0%  { opacity: 0; transform: translateY(18px); }
+  100%{ opacity: 1; transform: translateY(0); }
+}
+
+/* ======================================
+   SHIMMER LOADING EFFECT
+====================================== */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    rgba(0,255,255,0.6) 0%,
+    rgba(255,255,255,1) 40%,
+    rgba(57,255,20,0.7) 60%,
+    rgba(0,255,255,0.6) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ======================================
+   ACID GREEN ACCENT UTILITIES
+====================================== */
+.acid-glow {
+  box-shadow: 0 0 12px #39FF14, 0 0 24px rgba(57, 255, 20, 0.3);
+}
+.acid-text {
+  color: #39FF14;
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+/* ======================================
+   STAT CARD
+====================================== */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,255,255,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ======================================
+   SERVICE TAG BADGE
+====================================== */
+.tag-badge {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #39FF14;
+  opacity: 0.8;
+}
+
+/* ======================================
+   IMPROVED NEON INPUT
+====================================== */
+.neon-input::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+.neon-input:focus::placeholder {
+  color: rgba(0,255,255,0.3);
+}
+
+/* ======================================
+   GRADIENT BORDER CARD
+====================================== */
+.gradient-border {
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,255,255,0.4), rgba(57,255,20,0.2), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 
