@@ -43,9 +43,9 @@ export default function KineticTagline({ className = '' }) {
       className={`font-sans font-light leading-snug ${className}`}
       style={{ perspective: '800px' }}
     >
-      <span className="text-white/50">{PREFIX}</span>
+      <span className="text-white/40">{PREFIX}</span>
       <span
-        className="inline-block font-semibold text-white"
+        className="inline-block font-medium text-white/80"
         style={{
           ...wordStyle,
           transition: 'opacity 0.32s cubic-bezier(.22,1,.36,1), transform 0.32s cubic-bezier(.22,1,.36,1), filter 0.32s ease',
