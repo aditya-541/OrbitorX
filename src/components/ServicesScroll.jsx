@@ -188,7 +188,7 @@ function ServiceCard({ service, state }) {
       <div className="h-full flex flex-col lg:flex-row gap-0">
 
         {/* LEFT — giant number + meta */}
-        <div className="lg:w-[340px] shrink-0 flex flex-col justify-between border-r border-white/6 px-10 py-14 lg:py-20">
+        <div className="lg:w-[300px] shrink-0 flex flex-col justify-between border-r border-white/6 px-8 py-10 lg:py-14">
 
           {/* Service number */}
           <div>
@@ -232,7 +232,7 @@ function ServiceCard({ service, state }) {
 
           {/* Icon */}
           <div
-            className="mt-10 w-14 h-14 shrink-0"
+            className="mt-6 w-10 h-10 shrink-0"
             style={{ color: service.accent, opacity: 0.6 }}
           >
             {service.icon}
@@ -240,13 +240,13 @@ function ServiceCard({ service, state }) {
         </div>
 
         {/* RIGHT — tagline + summary + bullets */}
-        <div className="flex-1 flex flex-col justify-center px-10 lg:px-16 py-14 lg:py-20 gap-8 overflow-y-auto">
+        <div className="flex-1 flex flex-col justify-center px-10 lg:px-16 py-10 lg:py-14 gap-5 overflow-y-auto">
 
           {/* Tagline */}
           <p
-            className="font-sans leading-relaxed"
+            className="font-sans leading-snug"
             style={{
-              fontSize: 'clamp(16px, 2.2vw, 22px)',
+              fontSize: 'clamp(15px, 1.6vw, 19px)',
               color: 'rgba(255,255,255,0.75)',
               fontWeight: 300,
             }}
@@ -255,12 +255,12 @@ function ServiceCard({ service, state }) {
           </p>
 
           {/* Summary */}
-          <p className="font-sans text-white/40 text-sm leading-relaxed max-w-xl">
+          <p className="font-sans text-white/40 text-xs leading-relaxed max-w-xl">
             {service.summary}
           </p>
 
           {/* Bullets */}
-          <ul className="flex flex-col gap-3">
+          <ul className="flex flex-col gap-2.5">
             {service.bullets.map((b, i) => (
               <li
                 key={b}
