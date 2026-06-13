@@ -13,6 +13,7 @@ import WorkPage    from './pages/WorkPage.jsx';
 import AboutPage   from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
+import EventPage    from './pages/EventPage.jsx';
 
 function ScrollProgressBar() {
   const [progress, setProgress] = useState(0);
@@ -100,6 +101,7 @@ export default function App() {
             <Route path="/work"     element={<PageWrapper><WorkPage /></PageWrapper>}    />
             <Route path="/about"    element={<PageWrapper><AboutPage /></PageWrapper>}   />
             <Route path="/contact"  element={<PageWrapper><ContactPage /></PageWrapper>} />
+            <Route path="/events/:id" element={<PageWrapper><EventPage /></PageWrapper>} />
             <Route path="*"         element={<PageWrapper><NotFoundPage /></PageWrapper>} />
           </Routes>
         </main>

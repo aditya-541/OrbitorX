@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { events } from '../data/content.js';
 
 /* ------------------------------------------------------------------ */
@@ -301,15 +302,8 @@ function MasonryCard({ evt, index, onOpen }) {
 /* Main Gallery export                                                  */
 /* ------------------------------------------------------------------ */
 export default function Gallery({ hideHeader = false }) {
-  const [selectedIdx, setSelectedIdx] = useState(null);
-
-  const openLightbox = useCallback((evt) => {
-    const idx = events.findIndex((e) => e.id === evt.id);
-    setSelectedIdx(idx);
-  }, []);
-  const closeLightbox = useCallback(() => setSelectedIdx(null), []);
-  const goPrev = useCallback(() => setSelectedIdx((i) => (i - 1 + events.length) % events.length), []);
-  const goNext = useCallback(() => setSelectedIdx((i) => (i + 1) % events.length), []);
+  const navigate = useNavigate();
+  const openEvent = useCallback((evt) => navigate(`/events/${evt.id}`), [navigate]);
 
   const [headerRef, headerVisible] = useScrollReveal(0);
 
@@ -340,17 +334,17 @@ export default function Gallery({ hideHeader = false }) {
         )}
 
         {/* Horizontal drag-scroll strip */}
-        <HorizontalStrip events={events} onOpen={openLightbox} />
+        <HorizontalStrip events={events} onOpen={openEvent} />
 
         {/* Masonry grid */}
         <div>
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-5 h-px bg-neon/40" />
+            <div className="w-5 h-px bg-white/15" />
             <p className="font-mono-custom text-white/25 text-[9px] tracking-[0.4em] uppercase">// ALL EVENTS</p>
           </div>
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
             {events.map((evt, i) => (
-              <MasonryCard key={evt.id} evt={evt} index={i} onOpen={openLightbox} />
+              <MasonryCard key={evt.id} evt={evt} index={i} onOpen={openEvent} />
             ))}
           </div>
         </div>
@@ -363,12 +357,6 @@ export default function Gallery({ hideHeader = false }) {
         </div>
       </div>
 
-      <Lightbox
-        event={selectedIdx !== null ? events[selectedIdx] : null}
-        onClose={closeLightbox}
-        onPrev={goPrev}
-        onNext={goNext}
-      />
     </section>
   );
 }
