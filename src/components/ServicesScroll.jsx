@@ -10,8 +10,8 @@ const SERVICES = [
     tagline: 'End-to-end decentralized event execution powering the future of developer-first experiences.',
     summary: 'We architect and execute decentralized hackathons, workshops, and technical events — combining operational precision, transparent builder validation, and on-chain reporting.',
     bullets: ['Speaker & Partner Coordination', 'Logistics & Venue Management', 'Developer Profile Verification', 'Documented Grant Report', 'KPI Fulfillment & Impact Analysis', 'Conference & Ecosystem Alignment'],
-    accent: '#00FFFF',
-    accentDim: 'rgba(0,255,255,0.08)',
+    accent: '#ffffff',
+    accentDim: 'rgba(255,255,255,0.04)',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-full h-full">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h16.5m0 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5M9 11.25v1.5M12 9v3.75m3-6v6" />
@@ -26,8 +26,8 @@ const SERVICES = [
     tagline: 'Full-stack growth architecture designed to bring ecosystems closer to communities.',
     summary: 'We build awareness engines rooted in authenticity, community-driven storytelling, and data-backed execution — blending grassroots activation with global visibility.',
     bullets: ['KOL & Influencer Marketing', 'Social Media Management', 'Institutional Collaborations', 'Design & Creative Assets', 'Ambassador Programs'],
-    accent: '#39FF14',
-    accentDim: 'rgba(57,255,20,0.08)',
+    accent: '#ffffff',
+    accentDim: 'rgba(255,255,255,0.04)',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-full h-full">
         <path strokeLinecap="round" strokeLinejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535" />
@@ -42,8 +42,8 @@ const SERVICES = [
     tagline: 'We build persistent, high-intent communities where developers progress and evolve.',
     summary: 'Our community engine is built on real participation, learning-first culture, and recognition systems that motivate long-term contribution.',
     bullets: ['NFC Attendance & Rewards', 'X Threads, AMAs & Recaps', 'Retention & Engagement', 'Creator Programs', 'Designed Learning Curriculum'],
-    accent: '#7B2FFF',
-    accentDim: 'rgba(123,47,255,0.08)',
+    accent: '#ffffff',
+    accentDim: 'rgba(255,255,255,0.04)',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-full h-full">
         <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -58,8 +58,8 @@ const SERVICES = [
     tagline: 'Visual storytelling engineered to immortalize every moment.',
     summary: 'We transform moments, missions, and milestones into compelling visual narratives — blending documentary rigor, brand storytelling, and cinematic craft.',
     bullets: ['Photography & Cinematography', '3D Rendering & Modeling', 'Podcast & Live Casting', 'Raw Footage Editing', 'Visual FX & Graphic Design'],
-    accent: '#FF6B00',
-    accentDim: 'rgba(255,107,0,0.08)',
+    accent: '#ffffff',
+    accentDim: 'rgba(255,255,255,0.04)',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-full h-full">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
@@ -75,8 +75,8 @@ const SERVICES = [
     tagline: 'Reliable, scalable digital development forming the backbone of Web3 growth.',
     summary: 'We build the digital backbone that powers scalable growth — combining clean engineering, conversion-driven design, and automation systems.',
     bullets: ['Full-Stack Web Development', 'Case Studies & Analysis', 'Lead Generation & Funnels', 'Impact Tracking Dashboards', 'CRM & SEM Optimization'],
-    accent: '#00FFFF',
-    accentDim: 'rgba(0,255,255,0.08)',
+    accent: '#ffffff',
+    accentDim: 'rgba(255,255,255,0.04)',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-full h-full">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
@@ -91,8 +91,8 @@ const SERVICES = [
     tagline: 'Strategic narrative design empowering founders and ecosystems to communicate with precision.',
     summary: 'We engineer narratives that drive perception, adoption, and trust — crafting content that clarifies vision and builds authority across every channel.',
     bullets: ['GTM & Campaign Strategy', 'Blog Writing & Brand Messaging', 'PR & Media Outreach', 'Thought Leadership & Founder Narratives'],
-    accent: '#39FF14',
-    accentDim: 'rgba(57,255,20,0.08)',
+    accent: '#ffffff',
+    accentDim: 'rgba(255,255,255,0.04)',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-full h-full">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
@@ -107,8 +107,8 @@ const SERVICES = [
     tagline: 'Structured partnerships to drive adoption, discover builders, and enable cross-chain collaboration.',
     summary: 'We architect growth through meaningful, outcomes-driven alliances — connecting builders, protocols, and institutions into a unified value network.',
     bullets: ['Cross-Project Collaborations', 'Strategic Partnership Outreach', 'Project Scouting & Onboarding', 'Ecosystem Mapping', 'Accelerator & Grant Support'],
-    accent: '#7B2FFF',
-    accentDim: 'rgba(123,47,255,0.08)',
+    accent: '#ffffff',
+    accentDim: 'rgba(255,255,255,0.04)',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-full h-full">
         <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
@@ -123,8 +123,8 @@ const SERVICES = [
     tagline: 'Participation-driven intelligence layer validating real community progress and impact.',
     summary: 'We bring transparency and verifiable impact to ecosystem growth — mapping engagement on-chain and issuing participation credentials so real builders get recognized.',
     bullets: ['On-Chain Event Tracking', 'NFT Badges & POAP Analytics', 'DAO-Based KPI Tracking'],
-    accent: '#FF6B00',
-    accentDim: 'rgba(255,107,0,0.08)',
+    accent: '#ffffff',
+    accentDim: 'rgba(255,255,255,0.04)',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-full h-full">
         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z" />
@@ -209,7 +209,7 @@ function ServiceCard({ service, state }) {
           <div className="flex flex-col gap-4 mt-auto">
             <p
               className="font-mono-custom text-[9px] tracking-[0.35em] uppercase"
-              style={{ color: service.accent, opacity: 0.7 }}
+              style={{ color: 'rgba(255,255,255,0.4)' }}
             >
               {service.tag}
             </p>
@@ -225,8 +225,8 @@ function ServiceCard({ service, state }) {
 
             {/* Accent line */}
             <div
-              className="w-12 h-0.5 rounded-full"
-              style={{ background: service.accent, boxShadow: `0 0 8px ${service.accent}` }}
+              className="w-12 h-px"
+              style={{ background: 'rgba(255,255,255,0.4)' }}
             />
           </div>
 
@@ -272,8 +272,7 @@ function ServiceCard({ service, state }) {
                 }}
               >
                 <span
-                  className="shrink-0 w-1 h-1 rounded-full"
-                  style={{ background: service.accent, boxShadow: `0 0 6px ${service.accent}` }}
+                  className="shrink-0 w-1 h-1 rounded-full bg-white/40"
                 />
                 <span className="font-mono-custom text-white/55 text-xs tracking-wide">{b}</span>
               </li>
@@ -290,11 +289,11 @@ function ServiceCard({ service, state }) {
           >
             <span
               className="font-mono-custom text-[10px] tracking-widest"
-              style={{ color: service.accent }}
+              style={{ color: 'rgba(255,255,255,0.5)' }}
             >
               → GET IN TOUCH
             </span>
-            <div className="flex-1 h-px" style={{ background: `${service.accent}30` }} />
+            <div className="flex-1 h-px bg-white/10" />
           </div>
         </div>
       </div>
@@ -348,8 +347,8 @@ export default function ServicesScroll({ hideHeader = false }) {
           <div className="flex items-center justify-between pt-6 shrink-0">
             {!hideHeader && (
               <div className="flex items-center gap-3">
-                <div className="w-4 h-px bg-neon/50" />
-                <p className="font-mono-custom text-neon/50 text-[9px] tracking-[0.4em] uppercase">
+                <div className="w-4 h-px bg-white/25" />
+                <p className="font-mono-custom text-white/30 text-[9px] tracking-[0.4em] uppercase">
                   // WHAT WE DO
                 </p>
               </div>
@@ -358,8 +357,7 @@ export default function ServicesScroll({ hideHeader = false }) {
             {/* Service index + total */}
             <div className="flex items-center gap-2 ml-auto">
               <span
-                className="font-pixel text-xs transition-all duration-400"
-                style={{ color: svc.accent }}
+                className="font-pixel text-xs text-white/60 transition-all duration-400"
               >
                 {svc.num}
               </span>
@@ -371,7 +369,7 @@ export default function ServicesScroll({ hideHeader = false }) {
           <div className="lg:hidden shrink-0 mt-6 mb-4">
             <p
               className="font-mono-custom text-[9px] tracking-[0.35em] uppercase transition-colors duration-400"
-              style={{ color: svc.accent, opacity: 0.7 }}
+              style={{ color: 'rgba(255,255,255,0.4)' }}
             >
               {svc.tag}
             </p>
@@ -400,8 +398,8 @@ export default function ServicesScroll({ hideHeader = false }) {
                   style={{
                     width:  i === active ? '24px' : '6px',
                     height: '6px',
-                    background: i === active ? svc.accent : 'rgba(255,255,255,0.15)',
-                    boxShadow: i === active ? `0 0 8px ${svc.accent}` : 'none',
+                    background: i === active ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.15)',
+                    boxShadow: 'none',
                   }}
                 />
               ))}
@@ -417,8 +415,8 @@ export default function ServicesScroll({ hideHeader = false }) {
                 className="absolute left-0 top-0 h-full transition-all duration-300"
                 style={{
                   width: `${((active) / (count - 1)) * 100}%`,
-                  background: `linear-gradient(90deg, ${svc.accent}, ${svc.accent}80)`,
-                  boxShadow: `0 0 6px ${svc.accent}`,
+                  background: 'rgba(255,255,255,0.6)',
+                  boxShadow: 'none',
                   transition: 'width 0.4s cubic-bezier(.22,1,.36,1)',
                 }}
               />

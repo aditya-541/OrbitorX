@@ -8,7 +8,7 @@ export default function MagneticCursor() {
   const pos      = useRef({ x: -100, y: -100 });
   const ring     = useRef({ x: -100, y: -100 });
   const raf      = useRef(null);
-  const [color,  setColor]  = useState('#00FFFF');
+  const [color,  setColor]  = useState('rgba(255,255,255,0.9)');
   const [hovered, setHovered] = useState(false);
   const [hidden, setHidden] = useState(false);
 
@@ -42,11 +42,7 @@ export default function MagneticCursor() {
       setHovered(true);
 
       // pick accent color from data-cursor-color or element style
-      const accent = el.dataset.cursorColor
-        || (el.classList.contains('btn-neon') ? '#00FFFF'
-          : el.classList.contains('acid')     ? '#39FF14'
-          : '#00FFFF');
-      setColor(accent);
+      setColor('rgba(255,255,255,0.95)');
 
       // magnetic pull: shift dot toward center of element
       const rect = el.getBoundingClientRect();
@@ -59,7 +55,7 @@ export default function MagneticCursor() {
 
     const onLeave = () => {
       setHovered(false);
-      setColor('#00FFFF');
+      setColor('rgba(255,255,255,0.9)');
     };
 
     const onHide  = () => setHidden(true);
@@ -95,7 +91,7 @@ export default function MagneticCursor() {
           height: hovered ? '10px' : '8px',
           borderRadius: '50%',
           background: color,
-          boxShadow: `0 0 8px ${color}, 0 0 16px ${color}60`,
+          boxShadow: 'none',
           opacity: hidden ? 0 : 1,
           transition: 'width 0.2s ease, height 0.2s ease, background 0.3s ease, opacity 0.3s ease',
           willChange: 'transform',
@@ -112,7 +108,7 @@ export default function MagneticCursor() {
           borderRadius: '50%',
           border: `1px solid ${color}`,
           opacity: hidden ? 0 : hovered ? 0.8 : 0.35,
-          boxShadow: hovered ? `0 0 12px ${color}40` : 'none',
+          boxShadow: 'none',
           transition: 'width 0.35s cubic-bezier(.22,1,.36,1), height 0.35s cubic-bezier(.22,1,.36,1), opacity 0.3s ease, border-color 0.3s ease',
           willChange: 'transform',
         }}

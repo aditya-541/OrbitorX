@@ -1,13 +1,13 @@
 import { useEffect, useState, useRef } from 'react';
 
 const BOOT_LINES = [
-  { text: 'ORBITORX SYSTEMS v2.0.24', delay: 0,    color: '#00FFFF' },
-  { text: '> INITIALIZING CORE MODULES...', delay: 300,  color: '#ffffff99' },
-  { text: '> LOADING ECOSYSTEM NETWORK...', delay: 700,  color: '#ffffff99' },
-  { text: '> MOUNTING WEB3 INTERFACE...', delay: 1100, color: '#ffffff99' },
-  { text: '> CALIBRATING ORBITAL SYSTEMS...', delay: 1500, color: '#ffffff99' },
-  { text: '> VERIFYING ON-CHAIN CREDENTIALS...', delay: 1900, color: '#39FF14' },
-  { text: '> ALL SYSTEMS NOMINAL', delay: 2300, color: '#39FF14' },
+  { text: 'ORBITORX SYSTEMS v2.0.24', delay: 0,    color: 'rgba(255,255,255,0.9)' },
+  { text: '> INITIALIZING CORE MODULES...', delay: 300,  color: 'rgba(255,255,255,0.45)' },
+  { text: '> LOADING ECOSYSTEM NETWORK...', delay: 700,  color: 'rgba(255,255,255,0.45)' },
+  { text: '> MOUNTING WEB3 INTERFACE...', delay: 1100, color: 'rgba(255,255,255,0.45)' },
+  { text: '> CALIBRATING ORBITAL SYSTEMS...', delay: 1500, color: 'rgba(255,255,255,0.45)' },
+  { text: '> VERIFYING ON-CHAIN CREDENTIALS...', delay: 1900, color: 'rgba(255,255,255,0.7)' },
+  { text: '> ALL SYSTEMS NOMINAL', delay: 2300, color: 'rgba(255,255,255,0.9)' },
 ];
 
 function useTypewriter(text, startDelay, speed = 28) {
@@ -95,12 +95,12 @@ function ProgressBar({ onComplete }) {
           LOADING {width.toString().padStart(3, ' ')}%
         </p>
         {done && (
-          <p className="font-mono-custom text-acid text-[10px] tracking-widest">
+          <p className="font-mono-custom text-white/60 text-[10px] tracking-widest">
             READY
           </p>
         )}
       </div>
-      <p className="font-mono-custom text-neon text-xs tracking-wider" style={{ letterSpacing: '0.05em' }}>
+      <p className="font-mono-custom text-white/50 text-xs tracking-wider" style={{ letterSpacing: '0.05em' }}>
         [{bar}]
       </p>
     </div>
@@ -155,7 +155,7 @@ export default function Preloader({ onDone }) {
 
         {/* Terminal body */}
         <div
-          className="border border-neon/20 p-6 flex flex-col gap-1.5"
+          className="border border-white/10 p-6 flex flex-col gap-1.5"
           style={{
             background: 'linear-gradient(135deg, rgba(0,255,255,0.02) 0%, rgba(0,0,0,0.98) 100%)',
             boxShadow: '0 0 60px rgba(0,255,255,0.08), 0 0 120px rgba(0,255,255,0.04)',
@@ -169,8 +169,8 @@ export default function Preloader({ onDone }) {
         </div>
 
         {/* Corner accents */}
-        <div className="absolute top-10 left-0 w-4 h-4 border-t border-l border-neon/60 -translate-x-1 -translate-y-1" />
-        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-acid/60 translate-x-1 translate-y-1" />
+        <div className="absolute top-10 left-0 w-4 h-4 border-t border-l border-white/25 -translate-x-1 -translate-y-1" />
+        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/15 translate-x-1 translate-y-1" />
       </div>
     </div>
   );

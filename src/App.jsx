@@ -30,8 +30,8 @@ function ScrollProgressBar() {
         className="h-full transition-all duration-100"
         style={{
           width: `${progress}%`,
-          background: 'linear-gradient(90deg, #00FFFF, #39FF14)',
-          boxShadow: '0 0 8px #00FFFF, 0 0 16px rgba(0,255,255,0.4)',
+          background: 'rgba(255,255,255,0.7)',
+          boxShadow: 'none',
         }}
       />
     </div>

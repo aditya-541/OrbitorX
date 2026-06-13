@@ -71,8 +71,8 @@ export default function Navbar() {
           <img
             src="/logo.png"
             alt="OrbitorX"
-            className="h-16 w-auto object-contain brightness-125 transition-all duration-300 group-hover:brightness-150 group-hover:scale-105 group-hover:drop-shadow-[0_0_20px_rgba(0,255,255,0.85)]"
-            style={{ filter: 'drop-shadow(0 0 8px rgba(0,255,255,0.35)) brightness(1.2)' }}
+            className="h-16 w-auto object-contain transition-all duration-300 group-hover:scale-105 group-hover:brightness-125"
+            style={{ filter: 'brightness(1.15) contrast(1.05)' }}
             draggable={false}
           />
         </button>
@@ -154,7 +154,7 @@ function MobileMenu({ links, onNavClick }) {
         style={{ transitionProperty: 'max-height, opacity' }}
       >
         <div className="flex justify-center py-5 border-b border-white/5">
-          <img src="/logo.png" alt="OrbitorX" className="h-14 w-auto object-contain brightness-125" style={{ filter: 'drop-shadow(0 0 8px rgba(0,255,255,0.4)) brightness(1.2)' }} draggable={false} />
+          <img src="/logo.png" alt="OrbitorX" className="h-14 w-auto object-contain" style={{ filter: 'brightness(1.1) contrast(1.05)' }} draggable={false} />
         </div>
 
         <ul className="flex flex-col items-center gap-0 list-none m-0 p-0 py-4">

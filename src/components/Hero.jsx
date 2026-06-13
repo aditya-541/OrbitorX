@@ -49,15 +49,8 @@ export default function Hero() {
 
       {/* Gradient top-left ambient */}
       <div
-        className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none opacity-10"
-        style={{ background: 'radial-gradient(circle, rgba(0,255,255,0.3) 0%, transparent 70%)' }}
-        aria-hidden="true"
-      />
-
-      {/* Gradient bottom-right ambient */}
-      <div
-        className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none opacity-8"
-        style={{ background: 'radial-gradient(circle, rgba(57,255,20,0.2) 0%, transparent 70%)' }}
+        className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none opacity-5"
+        style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)' }}
         aria-hidden="true"
       />
 

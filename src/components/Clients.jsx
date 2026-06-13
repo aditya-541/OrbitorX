@@ -31,8 +31,8 @@ export default function Clients() {
       <div className="max-w-7xl mx-auto px-6 mb-12">
         <FadeIn>
           <div className="flex items-center gap-3">
-            <div className="w-5 h-px bg-neon opacity-50" />
-            <p className="font-mono-custom text-neon/60 text-[10px] tracking-[0.4em] uppercase">
+            <div className="w-5 h-px bg-white/25" />
+            <p className="font-mono-custom text-white/30 text-[10px] tracking-[0.4em] uppercase">
               // TRUSTED BY BUILDERS ACROSS ECOSYSTEMS
             </p>
           </div>
@@ -54,7 +54,7 @@ export default function Clients() {
             style={{ animation: 'marquee 28s linear infinite' }}
           >
             {tripled.map((name, i) => (
-              <ClientChip key={`r1-${i}`} name={name} accent="#00FFFF" />
+              <ClientChip key={`r1-${i}`} name={name} />
             ))}
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function Clients() {
             style={{ animation: 'marquee 22s linear infinite reverse' }}
           >
             {[...tripled].reverse().map((name, i) => (
-              <ClientChip key={`r2-${i}`} name={name} accent="#39FF14" />
+              <ClientChip key={`r2-${i}`} name={name} />
             ))}
           </div>
         </div>
@@ -77,14 +77,14 @@ export default function Clients() {
 
       {/* Stats strip */}
       <FadeIn className="mt-14 max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-3 gap-px bg-neon/8">
+        <div className="grid grid-cols-3 gap-px bg-white/5">
           {[
             { v: '12+', l: 'Ecosystem Partners' },
             { v: '3M+', l: 'Users Reached'      },
             { v: '42+', l: 'Events Executed'     },
           ].map((s) => (
             <div key={s.l} className="bg-dark-2 px-6 py-5 text-center">
-              <p className="font-pixel text-neon text-lg mb-1">{s.v}</p>
+              <p className="font-pixel text-white text-lg mb-1">{s.v}</p>
               <p className="font-mono-custom text-white/30 text-[9px] tracking-widest uppercase">{s.l}</p>
             </div>
           ))}
@@ -94,24 +94,22 @@ export default function Clients() {
   );
 }
 
-function ClientChip({ name, accent }) {
+function ClientChip({ name }) {
   return (
     <div className="inline-flex items-center mx-3 shrink-0 group cursor-default">
       <span
         className="font-mono-custom text-[11px] tracking-widest px-5 py-2.5 whitespace-nowrap border transition-all duration-300"
         style={{
-          color: 'rgba(255,255,255,0.4)',
-          borderColor: 'rgba(255,255,255,0.07)',
+          color: 'rgba(255,255,255,0.35)',
+          borderColor: 'rgba(255,255,255,0.08)',
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = accent;
-          e.currentTarget.style.borderColor = `${accent}50`;
-          e.currentTarget.style.boxShadow = `0 0 12px ${accent}20`;
+          e.currentTarget.style.color = 'rgba(255,255,255,0.85)';
+          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = 'rgba(255,255,255,0.4)';
-          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)';
-          e.currentTarget.style.boxShadow = 'none';
+          e.currentTarget.style.color = 'rgba(255,255,255,0.35)';
+          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
         }}
       >
         {name}
