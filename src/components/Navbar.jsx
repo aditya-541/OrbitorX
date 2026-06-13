@@ -60,7 +60,7 @@ export default function Navbar() {
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-1 flex items-center justify-between">
 
         {/* Logo */}
         <button
@@ -71,7 +71,8 @@ export default function Navbar() {
           <img
             src="/logo.png"
             alt="OrbitorX"
-            className="h-12 w-auto object-contain brightness-110 transition-all duration-300 group-hover:brightness-130 group-hover:drop-shadow-[0_0_14px_rgba(0,255,255,0.7)]"
+            className="h-16 w-auto object-contain transition-all duration-300 group-hover:scale-105 group-hover:brightness-125"
+            style={{ filter: 'brightness(1.15) contrast(1.05)' }}
             draggable={false}
           />
         </button>
@@ -153,7 +154,7 @@ function MobileMenu({ links, onNavClick }) {
         style={{ transitionProperty: 'max-height, opacity' }}
       >
         <div className="flex justify-center py-5 border-b border-white/5">
-          <img src="/logo.png" alt="OrbitorX" className="h-9 w-auto object-contain brightness-110" draggable={false} />
+          <img src="/logo.png" alt="OrbitorX" className="h-14 w-auto object-contain" style={{ filter: 'brightness(1.1) contrast(1.05)' }} draggable={false} />
         </div>
 
         <ul className="flex flex-col items-center gap-0 list-none m-0 p-0 py-4">

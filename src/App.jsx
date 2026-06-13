@@ -4,6 +4,8 @@ import Navbar          from './components/Navbar.jsx';
 import Footer          from './components/Footer.jsx';
 import CornerComet     from './components/CornerComet.jsx';
 import StarfieldCanvas from './components/StarfieldCanvas.jsx';
+import Preloader       from './components/Preloader.jsx';
+import MagneticCursor  from './components/MagneticCursor.jsx';
 
 import HomePage    from './pages/HomePage.jsx';
 import ServicesPage from './pages/ServicesPage.jsx';
@@ -11,6 +13,7 @@ import WorkPage    from './pages/WorkPage.jsx';
 import AboutPage   from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
+import EventPage    from './pages/EventPage.jsx';
 
 function ScrollProgressBar() {
   const [progress, setProgress] = useState(0);
@@ -28,8 +31,8 @@ function ScrollProgressBar() {
         className="h-full transition-all duration-100"
         style={{
           width: `${progress}%`,
-          background: 'linear-gradient(90deg, #00FFFF, #39FF14)',
-          boxShadow: '0 0 8px #00FFFF, 0 0 16px rgba(0,255,255,0.4)',
+          background: 'rgba(255,255,255,0.7)',
+          boxShadow: 'none',
         }}
       />
     </div>
@@ -46,6 +49,7 @@ function PageWrapper({ children }) {
 
 export default function App() {
   const { pathname } = useLocation();
+  const [booted, setBooted] = useState(() => !!sessionStorage.getItem('ob_booted'));
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -76,8 +80,16 @@ export default function App() {
     };
   }, []);
 
+  const handleBooted = () => {
+    sessionStorage.setItem('ob_booted', '1');
+    setBooted(true);
+  };
+
+  if (!booted) return <Preloader onDone={handleBooted} />;
+
   return (
     <>
+      <MagneticCursor />
       <ScrollProgressBar />
       <StarfieldCanvas />
       <div className="relative z-10">
@@ -89,6 +101,7 @@ export default function App() {
             <Route path="/work"     element={<PageWrapper><WorkPage /></PageWrapper>}    />
             <Route path="/about"    element={<PageWrapper><AboutPage /></PageWrapper>}   />
             <Route path="/contact"  element={<PageWrapper><ContactPage /></PageWrapper>} />
+            <Route path="/events/:id" element={<PageWrapper><EventPage /></PageWrapper>} />
             <Route path="*"         element={<PageWrapper><NotFoundPage /></PageWrapper>} />
           </Routes>
         </main>

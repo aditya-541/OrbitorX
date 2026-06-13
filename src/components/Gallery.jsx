@@ -1,4 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { events } from '../data/content.js';
 
 /* ------------------------------------------------------------------ */
@@ -94,15 +95,34 @@ function Lightbox({ event, onClose, onPrev, onNext }) {
             className="w-full block"
             style={{ maxHeight: '72vh', objectFit: 'cover' }}
           />
-          {/* Caption bar */}
-          <div className="flex items-center justify-between px-5 py-3 border-t border-neon/15 bg-dark-2">
-            <div className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-neon" style={{ boxShadow: '0 0 6px #00FFFF' }} />
-              <span className="font-mono-custom text-white text-xs tracking-wide">{event.title}</span>
+          {/* Caption + about bar */}
+          <div className="border-t border-neon/15 bg-dark-2">
+            {/* Title row */}
+            <div className="flex items-center justify-between px-5 py-3 border-b border-white/5">
+              <div className="flex items-center gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-neon" style={{ boxShadow: '0 0 6px #00FFFF' }} />
+                <span className="font-mono-custom text-white text-xs tracking-wide font-semibold">{event.title}</span>
+                {event.subtitle && (
+                  <span className="font-mono-custom text-white/30 text-[9px] tracking-widest hidden sm:inline">
+                    · {event.subtitle.toUpperCase()}
+                  </span>
+                )}
+              </div>
+              <span className="font-mono-custom text-neon/60 text-[10px] tracking-widest">
+                {event.location} · {event.year}
+              </span>
             </div>
-            <span className="font-mono-custom text-neon/60 text-[10px] tracking-widest">
-              {event.location} · {event.year}
-            </span>
+            {/* Tagline + about */}
+            {(event.tagline || event.about) && (
+              <div className="px-5 py-4 flex flex-col gap-2">
+                {event.tagline && (
+                  <p className="font-mono-custom text-acid/70 text-[10px] tracking-widest">{event.tagline}</p>
+                )}
+                {event.about && (
+                  <p className="font-sans text-white/45 text-xs leading-relaxed max-w-2xl">{event.about}</p>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -212,6 +232,7 @@ function HorizontalCard({ evt, index, onOpen }) {
       {/* Caption */}
       <div className="absolute bottom-0 inset-x-0 p-4 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
         <p className="font-mono-custom text-white text-xs font-semibold tracking-wide">{evt.title}</p>
+        {evt.subtitle && <p className="font-sans text-white/45 text-[10px] mt-0.5">{evt.subtitle}</p>}
         <p className="font-mono-custom text-neon/70 text-[9px] tracking-widest mt-0.5">{evt.location} · {evt.year}</p>
       </div>
 
@@ -261,9 +282,10 @@ function MasonryCard({ evt, index, onOpen }) {
           aria-hidden="true"
         />
         <div className="relative z-10 flex items-end justify-between">
-          <div>
+          <div className="flex flex-col gap-1">
             <p className="font-mono-custom text-white text-xs font-semibold">{evt.title}</p>
-            <p className="font-mono-custom text-neon text-[9px] tracking-widest mt-0.5">{evt.location} · {evt.year}</p>
+            {evt.subtitle && <p className="font-sans text-white/50 text-[10px] leading-tight">{evt.subtitle}</p>}
+            <p className="font-mono-custom text-neon text-[9px] tracking-widest">{evt.location} · {evt.year}</p>
           </div>
           <div className="w-7 h-7 border border-neon/50 flex items-center justify-center shrink-0">
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3.5 h-3.5 text-neon">
@@ -280,15 +302,8 @@ function MasonryCard({ evt, index, onOpen }) {
 /* Main Gallery export                                                  */
 /* ------------------------------------------------------------------ */
 export default function Gallery({ hideHeader = false }) {
-  const [selectedIdx, setSelectedIdx] = useState(null);
-
-  const openLightbox = useCallback((evt) => {
-    const idx = events.findIndex((e) => e.id === evt.id);
-    setSelectedIdx(idx);
-  }, []);
-  const closeLightbox = useCallback(() => setSelectedIdx(null), []);
-  const goPrev = useCallback(() => setSelectedIdx((i) => (i - 1 + events.length) % events.length), []);
-  const goNext = useCallback(() => setSelectedIdx((i) => (i + 1) % events.length), []);
+  const navigate = useNavigate();
+  const openEvent = useCallback((evt) => navigate(`/events/${evt.id}`), [navigate]);
 
   const [headerRef, headerVisible] = useScrollReveal(0);
 
@@ -319,17 +334,17 @@ export default function Gallery({ hideHeader = false }) {
         )}
 
         {/* Horizontal drag-scroll strip */}
-        <HorizontalStrip events={events} onOpen={openLightbox} />
+        <HorizontalStrip events={events} onOpen={openEvent} />
 
         {/* Masonry grid */}
         <div>
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-5 h-px bg-neon/40" />
+            <div className="w-5 h-px bg-white/15" />
             <p className="font-mono-custom text-white/25 text-[9px] tracking-[0.4em] uppercase">// ALL EVENTS</p>
           </div>
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
             {events.map((evt, i) => (
-              <MasonryCard key={evt.id} evt={evt} index={i} onOpen={openLightbox} />
+              <MasonryCard key={evt.id} evt={evt} index={i} onOpen={openEvent} />
             ))}
           </div>
         </div>
@@ -342,12 +357,6 @@ export default function Gallery({ hideHeader = false }) {
         </div>
       </div>
 
-      <Lightbox
-        event={selectedIdx !== null ? events[selectedIdx] : null}
-        onClose={closeLightbox}
-        onPrev={goPrev}
-        onNext={goNext}
-      />
     </section>
   );
 }
