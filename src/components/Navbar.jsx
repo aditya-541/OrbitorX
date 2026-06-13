@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const NAV_LINKS = [
@@ -15,7 +15,6 @@ export default function Navbar() {
   const navigate  = useNavigate();
   const isHome    = location.pathname === '/';
 
-  // Scroll-spy only on the home page
   useEffect(() => {
     if (!isHome) { setActiveHomeId(''); return; }
 
@@ -42,17 +41,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Always navigate to the route path
-  const handleNavClick = (link) => {
-    navigate(link.path);
-  };
-
+  const handleNavClick = (link) => navigate(link.path);
   const handleLogoClick = () => {
-    if (isHome) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      navigate('/');
-    }
+    if (isHome) window.scrollTo({ top: 0, behavior: 'smooth' });
+    else navigate('/');
   };
 
   const isLinkActive = (link) => {
@@ -62,13 +54,13 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-black/90 backdrop-blur-md border-b border-neon/20'
+          ? 'bg-black/92 backdrop-blur-xl border-b border-neon/15 shadow-[0_1px_0_rgba(0,255,255,0.06)]'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
 
         {/* Logo */}
         <button
@@ -79,7 +71,7 @@ export default function Navbar() {
           <img
             src="/logo.png"
             alt="OrbitorX"
-            className="h-14 w-auto object-contain brightness-110 transition-all duration-300 group-hover:brightness-125 group-hover:drop-shadow-[0_0_16px_rgba(0,255,255,0.8)]"
+            className="h-12 w-auto object-contain brightness-110 transition-all duration-300 group-hover:brightness-130 group-hover:drop-shadow-[0_0_14px_rgba(0,255,255,0.7)]"
             draggable={false}
           />
         </button>
@@ -90,8 +82,8 @@ export default function Navbar() {
             <li key={link.path}>
               <button
                 onClick={() => handleNavClick(link)}
-                className={`nav-link font-mono-custom text-xs tracking-widest uppercase transition-colors ${
-                  isLinkActive(link) ? 'text-neon active' : 'text-white/60'
+                className={`nav-link font-mono-custom text-[11px] tracking-widest uppercase transition-colors duration-200 ${
+                  isLinkActive(link) ? 'text-neon active' : 'text-white/50 hover:text-white/80'
                 }`}
               >
                 {link.label}
@@ -103,7 +95,7 @@ export default function Navbar() {
         {/* CTA */}
         <button
           onClick={() => navigate('/contact')}
-          className="btn-neon font-mono-custom text-xs px-5 py-2 tracking-widest hidden md:block"
+          className="btn-neon font-mono-custom text-[11px] px-5 py-2.5 tracking-widest hidden md:block"
         >
           LAUNCH →
         </button>
@@ -118,46 +110,75 @@ export default function Navbar() {
 function MobileMenu({ links, onNavClick }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const menuRef  = useRef(null);
+
+  // Close on outside click
+  useEffect(() => {
+    if (!open) return;
+    const handler = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener('pointerdown', handler);
+    return () => document.removeEventListener('pointerdown', handler);
+  }, [open]);
+
+  // Close on route change
+  const location = useLocation();
+  useEffect(() => { setOpen(false); }, [location.pathname]);
 
   return (
-    <div className="md:hidden">
+    <div className="md:hidden" ref={menuRef}>
       <button
         onClick={() => setOpen(!open)}
-        className="text-neon font-pixel text-xs border border-neon/40 px-3 py-2"
+        className="relative w-9 h-9 flex flex-col items-center justify-center gap-1.5 focus:outline-none group"
         aria-label="Toggle menu"
         aria-expanded={open}
       >
-        {open ? '✕' : '≡'}
+        <span
+          className={`block w-6 h-px bg-neon transition-all duration-300 ${open ? 'rotate-45 translate-y-[5px]' : ''}`}
+        />
+        <span
+          className={`block w-6 h-px bg-neon transition-all duration-300 ${open ? 'opacity-0 -translate-x-2' : ''}`}
+        />
+        <span
+          className={`block w-6 h-px bg-neon transition-all duration-300 ${open ? '-rotate-45 -translate-y-[5px]' : ''}`}
+        />
       </button>
 
-      {open && (
-        <div className="absolute top-full left-0 right-0 bg-black/95 border-b border-neon/20 backdrop-blur-md py-6">
-          {/* Mobile menu logo */}
-          <div className="flex justify-center mb-4">
-            <img src="/logo.png" alt="OrbitorX" className="h-10 w-auto object-contain brightness-110" draggable={false} />
-          </div>
-          <ul className="flex flex-col items-center gap-6 list-none m-0 p-0">
-            {links.map((link) => (
-              <li key={link.path}>
-                <button
-                  onClick={() => { onNavClick(link); setOpen(false); }}
-                  className="nav-link font-mono-custom text-sm tracking-widest uppercase text-white/70 hover:text-neon transition-colors"
-                >
-                  {link.label}
-                </button>
-              </li>
-            ))}
-            <li>
+      {/* Dropdown panel */}
+      <div
+        className={`absolute top-full left-0 right-0 bg-black/96 border-b border-neon/15 backdrop-blur-xl overflow-hidden transition-all duration-350 ease-[cubic-bezier(.22,1,.36,1)] ${
+          open ? 'max-h-[420px] opacity-100' : 'max-h-0 opacity-0'
+        }`}
+        style={{ transitionProperty: 'max-height, opacity' }}
+      >
+        <div className="flex justify-center py-5 border-b border-white/5">
+          <img src="/logo.png" alt="OrbitorX" className="h-9 w-auto object-contain brightness-110" draggable={false} />
+        </div>
+
+        <ul className="flex flex-col items-center gap-0 list-none m-0 p-0 py-4">
+          {links.map((link, i) => (
+            <li key={link.path} className="w-full">
               <button
-                onClick={() => { navigate('/contact'); setOpen(false); }}
-                className="btn-neon font-mono-custom text-xs px-6 py-3 tracking-widest mt-2"
+                onClick={() => { onNavClick(link); setOpen(false); }}
+                className="w-full py-3.5 font-mono-custom text-sm tracking-widest uppercase text-white/60 hover:text-neon hover:bg-neon/5 transition-all duration-200 text-center"
+                style={{ animationDelay: `${i * 40}ms` }}
               >
-                LAUNCH →
+                {link.label}
               </button>
             </li>
-          </ul>
+          ))}
+        </ul>
+
+        <div className="flex justify-center pb-6">
+          <button
+            onClick={() => { navigate('/contact'); setOpen(false); }}
+            className="btn-neon font-mono-custom text-xs px-7 py-3 tracking-widest"
+          >
+            LAUNCH →
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 }

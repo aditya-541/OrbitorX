@@ -1,43 +1,22 @@
-// Starfield is now rendered globally in App.jsx
+import { Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GlitchText, TextScramble } from './GlitchText.jsx';
-import FloatingOrbs from './FloatingOrbs.jsx';
-import TechMesh from './TechMesh.jsx';
+import NetworkOrb from './NetworkOrb.jsx';
 
-/* Orbital ring SVG with slow rotation */
-function OrbitalRing() {
+function ScrollHint() {
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-      {/* Outer ring */}
-      <svg
-        className="orbital-ring absolute opacity-20"
-        style={{ width: 'min(700px, 90vw)', height: 'min(700px, 90vw)', animationDuration: '22s' }}
-        viewBox="0 0 400 400"
-        fill="none"
-      >
-        <ellipse cx="200" cy="200" rx="195" ry="60" stroke="#00FFFF" strokeWidth="0.8" strokeDasharray="6 4" />
-      </svg>
-      {/* Middle ring */}
-      <svg
-        className="absolute opacity-15"
-        style={{
-          width: 'min(500px, 70vw)', height: 'min(500px, 70vw)',
-          animation: 'orbit 16s linear infinite reverse',
-        }}
-        viewBox="0 0 400 400"
-        fill="none"
-      >
-        <ellipse cx="200" cy="200" rx="195" ry="80" stroke="#00FFFF" strokeWidth="0.5" strokeDasharray="3 6" />
-      </svg>
-      {/* Dot on outer ring */}
-      <svg
-        className="orbital-ring absolute opacity-70"
-        style={{ width: 'min(700px, 90vw)', height: 'min(700px, 90vw)', animationDuration: '22s' }}
-        viewBox="0 0 400 400"
-        fill="none"
-      >
-        <circle cx="200" cy="5" r="4" fill="#00FFFF" style={{ filter: 'drop-shadow(0 0 6px #00FFFF)' }} />
-      </svg>
+    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40 pointer-events-none" aria-hidden="true">
+      <span className="font-mono-custom text-white text-[9px] tracking-[0.3em] uppercase">Scroll</span>
+      <div className="w-px h-10 bg-gradient-to-b from-white/40 to-transparent" />
+    </div>
+  );
+}
+
+function StatPill({ value, label }) {
+  return (
+    <div className="flex flex-col items-center gap-0.5 px-5 py-3 border border-neon/15 bg-white/[0.02]">
+      <span className="font-mono-custom text-neon text-sm font-bold tracking-tight">{value}</span>
+      <span className="font-mono-custom text-white/35 text-[9px] tracking-[0.2em] uppercase">{label}</span>
     </div>
   );
 }
@@ -45,52 +24,16 @@ function OrbitalRing() {
 export default function Hero() {
   const navigate = useNavigate();
 
-  const goToServices = () => navigate('/services');
-  const goToWork     = () => navigate('/work');
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black pixel-grid-bg"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black"
     >
-      {/* Orbital rings */}
-      <OrbitalRing />
-
-      {/* Decorative floating orbs (parallax) */}
+      {/* Pixel grid — subtle */}
       <div
-        className="parallax parallax-slow"
-        onPointerMove={(e) => {
-          const el = e.currentTarget.closest('#hero');
-          if (!el) return;
-          const rect = el.getBoundingClientRect();
-          const cx = rect.left + rect.width / 2;
-          const cy = rect.top + rect.height / 2;
-          const dx = (e.clientX - cx) / (rect.width / 2); // -1..1
-          const dy = (e.clientY - cy) / (rect.height / 2); // -1..1
-          // stronger intensity
-          el.style.setProperty('--mx', `${dx * 60}px`);
-          el.style.setProperty('--my', `${dy * 40}px`);
-        }}
-        onPointerLeave={(e) => {
-          const el = e.currentTarget.closest('#hero');
-          if (!el) return;
-          el.style.setProperty('--mx', `0px`);
-          el.style.setProperty('--my', `0px`);
-        }}
-      >
-        <FloatingOrbs />
-      </div>
-
-      {/* Tech network overlay (parallax faster) */}
-      <div className="parallax parallax-fast">
-        <TechMesh />
-      </div>
-
-      {/* Pixel grid overlay */}
-      <div
-        className="absolute inset-0 opacity-30 pointer-events-none"
+        className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(0,255,255,0.08) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(0,255,255,0.07) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
         }}
         aria-hidden="true"
@@ -99,61 +42,114 @@ export default function Hero() {
       {/* Radial vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.85) 100%)',
-        }}
+        style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.9) 100%)' }}
         aria-hidden="true"
       />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 flex flex-col items-center gap-8 max-w-5xl mx-auto float-slower">
-        {/* Eyebrow */}
-        <p className="font-mono-custom text-neon text-xs tracking-[0.4em] uppercase border border-neon/30 px-4 py-2 neon-glow">
-          EST. 2019 · TECH AGENCY
-        </p>
+      {/* Gradient top-left ambient */}
+      <div
+        className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none opacity-10"
+        style={{ background: 'radial-gradient(circle, rgba(0,255,255,0.3) 0%, transparent 70%)' }}
+        aria-hidden="true"
+      />
 
-        {/* Main heading */}
-        <h1 className="font-pixel text-white leading-tight">
-          <GlitchText
-            text="OrbitorX"
-            tag="span"
-            repeat
-            className="glitch font-pixel text-4xl md:text-6xl lg:text-7xl block neon-text float-slow neon-flicker"
-            style={{ display: 'block' }}
-          />
-        </h1>
+      {/* Gradient bottom-right ambient */}
+      <div
+        className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none opacity-8"
+        style={{ background: 'radial-gradient(circle, rgba(57,255,20,0.2) 0%, transparent 70%)' }}
+        aria-hidden="true"
+      />
 
-        {/* Tagline */}
-        <p className="font-mono-custom text-white/80 text-base md:text-xl tracking-widest float-slow">
-          <TextScramble text="We Launch. You Scale." delay={800} />
-          <span className="cursor-blink" />
-        </p>
+      {/* Layout: two-column on desktop, stacked on mobile */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12 pt-24 pb-20">
 
-        {/* Sub-description */}
-        <p className="font-sans text-white/40 text-sm md:text-base max-w-md leading-relaxed">
-          Tech events · Startup growth · Product launches · Brand strategy
-        </p>
+        {/* Left — text content */}
+        <div className="flex flex-col items-start gap-7 max-w-xl page-enter">
 
-        {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4 float-slow">
-          <button
-            id="cta-work-with-us"
-            onClick={goToServices}
-            className="btn-neon font-pixel text-xs px-8 py-4 tracking-widest transition-all duration-300 pulse"
-          >
-            Work With Us
-          </button>
-          <button
-            id="cta-see-our-work"
-            onClick={goToWork}
-            className="btn-ghost font-pixel text-xs px-8 py-4 tracking-widest transition-all duration-300"
-          >
-            See Our Work
-          </button>
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3">
+            <div className="w-5 h-px bg-neon opacity-70" />
+            <p className="font-mono-custom text-neon/70 text-[10px] tracking-[0.4em] uppercase">
+              EST. 2019 &nbsp;·&nbsp; TECH AGENCY
+            </p>
+          </div>
+
+          {/* Main heading */}
+          <h1 className="flex flex-col gap-2">
+            <GlitchText
+              text="OrbitorX"
+              tag="span"
+              repeat
+              className="glitch font-pixel text-5xl md:text-7xl lg:text-8xl block shimmer-text neon-flicker"
+              style={{ display: 'block', lineHeight: 1.1 }}
+            />
+            <span className="font-sans text-white/60 text-lg md:text-2xl font-light tracking-wide leading-snug">
+              We Launch.{' '}
+              <span className="text-white font-medium">You Scale.</span>
+            </span>
+          </h1>
+
+          {/* Tagline scramble */}
+          <p className="font-mono-custom text-white/50 text-sm tracking-widest">
+            <TextScramble text="Tech events · Startup growth · Product launches" delay={600} />
+          </p>
+
+          {/* Sub description */}
+          <p className="font-sans text-white/40 text-sm leading-relaxed max-w-sm">
+            We embed, build, and launch alongside founders who refuse to orbit the same problems.
+          </p>
+
+          {/* CTA buttons */}
+          <div className="flex flex-col sm:flex-row items-start gap-4 mt-2">
+            <button
+              id="cta-work-with-us"
+              onClick={() => navigate('/contact')}
+              className="btn-neon font-mono-custom text-xs px-8 py-4 tracking-widest transition-all duration-300 pulse"
+            >
+              Start a Project →
+            </button>
+            <button
+              id="cta-see-our-work"
+              onClick={() => navigate('/work')}
+              className="btn-ghost font-mono-custom text-xs px-8 py-4 tracking-widest transition-all duration-300"
+            >
+              See Our Work
+            </button>
+          </div>
+
+          {/* Stats row */}
+          <div className="flex flex-wrap gap-px mt-4 bg-neon/10">
+            <StatPill value="42+" label="Events Hosted" />
+            <StatPill value="120+" label="Startups Scaled" />
+            <StatPill value="3M+" label="Users Reached" />
+          </div>
         </div>
 
-        {/* Scroll hint removed */}
+        {/* Right — 3D NetworkOrb */}
+        <div
+          className="relative w-full lg:w-[520px] lg:h-[520px] h-[340px] shrink-0"
+          style={{ opacity: 0, animation: 'pageEnter 0.9s 0.3s cubic-bezier(.22,1,.36,1) forwards' }}
+        >
+          <Suspense fallback={null}>
+            <NetworkOrb className="w-full h-full" />
+          </Suspense>
+
+          {/* Orb label */}
+          <div className="absolute bottom-4 right-4 flex flex-col items-end gap-1 pointer-events-none">
+            <span className="font-mono-custom text-neon/30 text-[8px] tracking-[0.3em] uppercase">Ecosystem Network</span>
+            <div className="flex items-center gap-1.5">
+              <div className="w-1.5 h-1.5 rounded-full bg-neon" style={{ boxShadow: '0 0 6px #00FFFF', animation: 'blink 2s ease-in-out infinite' }} />
+              <span className="font-mono-custom text-neon/50 text-[8px] tracking-widest">LIVE</span>
+            </div>
+          </div>
+
+          {/* Acid green corner accent */}
+          <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-acid/40" />
+          <div className="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-neon/30" />
+        </div>
       </div>
+
+      <ScrollHint />
     </section>
   );
 }
