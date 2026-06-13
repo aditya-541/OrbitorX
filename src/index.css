@@ -660,3 +660,17 @@ section {
 }
 
 
+
+/* ======================================
+   SERVICES STICKY SCROLL
+====================================== */
+/* Ensure sticky scroll container works inside flex/grid parents */
+#services {
+  overflow: visible;
+  z-index: 0;
+}
+
+/* Prevent section-parallax from fighting sticky */
+#services.section-parallax {
+  transform: none !important;
+}

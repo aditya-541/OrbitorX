@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Services from '../components/Services.jsx';
+import Services from '../components/ServicesScroll.jsx';
 import { FadeIn } from '../components/Animations.jsx';
 
 export default function ServicesPage() {
